@@ -13,7 +13,12 @@ export default {
       name: 'Charts',
       url: '/charts',
       icon: 'icon-pie-chart',
-    }
+    },
+    {
+      name: 'SQL editor',
+      url: '/sql-editors',
+      icon: 'icon-drop',
+    },  
   ],
 };
 
@@ -184,7 +189,7 @@ export default {
 //         },
 //       ],
 //     },
-    
+
 //     {
 //       name: 'Icons',
 //       url: '/icons',
