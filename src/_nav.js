@@ -19,6 +19,11 @@ export default {
       url: '/sql-editors',
       icon: 'icon-drop',
     },  
+    {
+      name: 'Git User',
+      url: '/git-users',
+      icon: 'icon-puzzle',
+    },
   ],
 };
 

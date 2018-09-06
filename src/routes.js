@@ -2,6 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable'
 
 import DefaultLayout from './containers/DefaultLayout';
+// import GitUser from './views/GitUser/GitUser';
 
 // function Loading() {
 //   return <div>Loading...</div>;
@@ -31,6 +32,11 @@ const SqlEditors = Loadable({
   loading: Loading,
 });
 
+const GitUser = Loadable({
+  loader: () => import('./views/GitUser'),
+  loading: Loading,
+});
+
 
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
@@ -39,6 +45,7 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/sql-editors', name: 'SqlEditors', component: SqlEditors },
   { path: '/charts', name: 'Charts', component: Charts },
+  { path: '/git-users', name: 'GitUser', component: GitUser },
 ];
 
 export default routes;
