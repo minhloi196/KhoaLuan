@@ -1,0 +1,6 @@
+{
+  "name": "GitUser",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./GitUser.js"
+}

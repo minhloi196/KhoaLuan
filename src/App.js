@@ -18,6 +18,14 @@ import { DefaultLayout } from './containers';
 // Pages
 import { Login, Page404, Page500, Register } from './views/Pages';
 
+
+
+// Fusion charts
+// import fusioncharts from 'fusioncharts';
+// import charts from 'fusioncharts/fusioncharts.charts';
+// import ReactFC from 'react-fusioncharts';
+// import theme from 'fusioncharts/themes/fusioncharts.theme.fint';
+
 // import { renderRoutes } from 'react-router-config';
 
 class App extends Component {
