@@ -9,7 +9,7 @@ import DefaultLayout from './containers/DefaultLayout';
 
 function Loading(props) {
   if (props.error) {
-    console.log('eroroooor', props.error)
+    console.log('error', props.error)
     return <div>Error!</div>;
   } else {
     return <div>Loading...</div>;
