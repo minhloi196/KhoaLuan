@@ -13,6 +13,22 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      navItemSelected: 1,
+    };
+
+    this.onClickNavItem = this.onClickNavItem.bind(this);
+  }
+
+  onClickNavItem(value) {
+    this.setState({
+      navItemSelected: value,
+    })
+  }
+
   render() {
 
     // eslint-disable-next-line
@@ -20,25 +36,24 @@ class DefaultHeader extends Component {
 
     return (
       <React.Fragment>
-        <AppSidebarToggler className="d-lg-none" display="md" mobile />
+        {/* <AppSidebarToggler className="d-lg-none" display="md" mobile /> */}
         <AppNavbarBrand
           full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Logo' }}
           minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Logo' }}
         />
-        <AppSidebarToggler className="d-md-down-none" display="lg" />
+        {/* <AppSidebarToggler className="d-md-down-none" display="lg" /> */}
 
-
-        {/* <Nav className="d-md-down-none" navbar>
+        <Nav className="d-md-down-none" pills>
           <NavItem className="px-3">
-            <NavLink href="/">Dashboard</NavLink>
+            <NavLink href="/" onClick={() => this.onClickNavItem(1)} active={this.state.navItemSelected === 1}>Manage</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="#/users">Users</NavLink>
+            <NavLink href="#" onClick={() => this.onClickNavItem(2)} active={this.state.navItemSelected === 2}>Analyze</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="#">Settings</NavLink>
+            <NavLink href="#/charts" onClick={() => this.onClickNavItem(3)} active={this.state.navItemSelected === 3}>Reporting</NavLink>
           </NavItem>
-        </Nav> */}
+        </Nav>
 
 
         <Nav className="ml-auto" navbar>

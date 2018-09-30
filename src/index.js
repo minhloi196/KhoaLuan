@@ -9,10 +9,10 @@ import configStore from './configStore';
 const store = configStore();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
 // disable ServiceWorker
 // registerServiceWorker();

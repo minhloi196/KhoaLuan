@@ -30,22 +30,22 @@ class DefaultLayout extends Component {
 
   render() {
     const { loginStatus } = this.props;
-    if (loginStatus === 'failed') {
-      return <Redirect from="/" to="/login" />
-    } else {
+    // if (loginStatus === 'failed') {
+    //   return <Redirect from="/" to="/login" />
+    // } else {
       return (
         <div className="app">
           <AppHeader fixed>
             <DefaultHeader />
           </AppHeader>
           <div className="app-body">
-            <AppSidebar fixed display="lg">
+            {/* <AppSidebar fixed display="lg">
               <AppSidebarHeader />
               <AppSidebarForm />
               <AppSidebarNav navConfig={navigation} {...this.props} />
               <AppSidebarFooter />
               <AppSidebarMinimizer />
-            </AppSidebar>
+            </AppSidebar> */}
             <main className="main">
               <AppBreadcrumb appRoutes={routes}/>
               <Container fluid>
@@ -71,7 +71,7 @@ class DefaultLayout extends Component {
         </div>
       );
     }
-  }
+  // }
 }
 
 const mapStateToProps = state => {
