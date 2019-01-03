@@ -7,7 +7,9 @@
 @import '@coreui/coreui/scss/_dropdown-menu-right.scss';
 
 // If you want to add something do it here
-@import "custom";
+@import "custom.css";
+@import "dashboard.css";
+@import "react-table.css";
 
 // ie fixes
 @import "ie-fix";

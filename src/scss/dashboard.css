@@ -1,0 +1,264 @@
+.dashboard-menu {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+}
+
+.table-list-dropdown {
+  margin-left: 7px;
+}
+
+.btn-import-db {
+  border-radius: 50% !important;
+  margin-left: 7px;
+}
+
+.label-data-source {
+  display: table;
+  height: 100%;
+}
+
+.label-data-source span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btn-import-db .fa-plus {
+  color: #fff;
+}
+
+.table-list-dropdown {
+  width: 250px;
+}
+
+.dashboard-content {
+  width: calc(100vw);
+  min-width: 800px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.dashboard-content .dashboard-content-left {
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #a7afce;
+  height: calc(100vh - 50px - 35px - 10px - 50px - 15px);
+  overflow: auto;
+}
+
+.dashboard-content .dashboard-content-right {
+  width: 64%;
+  padding: 10px;
+  margin-left: -1px;
+  border: 1px solid #a7afce;
+  height: calc(100vh - 50px - 35px - 10px - 50px - 15px);
+  overflow: auto;
+}
+
+.item-table-name {
+  border: 1px solid #d5c0ff;
+  margin-bottom: 7px;
+  padding: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.label-list-table, .label-list-column {
+  height: 22px;
+  font-weight: 500;
+  font-size: 15px;
+  padding-bottom: 2rem
+}
+
+.list-table-content {
+  /* height: calc(100% - 22px); */
+  overflow: auto;
+  border-top: 1px solid #d5c0ff;
+}
+
+.item-table-name:hover {
+  -webkit-box-shadow: 2px 2px 23px -1px rgba(133,126,133,1);
+  -moz-box-shadow: 2px 2px 23px -1px rgba(133,126,133,1);
+  box-shadow: 2px 2px 23px -1px rgba(133,126,133,1);
+  transition: 200ms;
+  font-size: 16px;
+}
+
+.left-list-top {
+  position: relative;
+  /* height: 60%; */
+  height: 100%;
+  overflow: auto
+}
+
+.left-list-bottom {
+  position: relative;
+  border-top: 1px solid #a7afce;
+  height: 40%;
+  overflow: auto;
+  padding-top: 1rem;
+}
+
+.btn-submit-query {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Collapsible {
+  background-color: white;
+}
+
+.Collapsible__trigger {
+  display: block;
+  font-weight: 400;
+  text-decoration: none;
+  color: #333333;
+  position: relative;
+  border-bottom: 3px solid #e4e5e6;
+  padding: 10px;
+  background: #5192a9c2;
+  color: white;
+}
+
+.Collapsible__contentInner {
+  /* padding: 10px; */
+  padding-left: 20px;
+  border: 1px solid #ebebeb;
+  border-top: 0;
+}
+
+.Collapsible__contentOuter {
+  background-color: #e4e5e6;
+}
+
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(180deg);
+}
+
+.Collapsible__trigger:after {
+  font-family: 'FontAwesome';
+  content: '\f107';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 300ms;
+}
+
+.second-collapsible .Collapsible__trigger  {
+  background: #94b3be;
+}
+
+.second-collapsible .Collapsible__contentOuter {
+  background-color: #94b3be59;
+}
+
+.second-collapsible .Collapsible__contentInner > div {
+  padding-top: 5px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.second-collapsible .Collapsible__contentInner > div:last-child {
+  border-bottom: 0;
+}
+
+.chart-page-container {
+  margin-top: 10px;
+}
+
+.chart-page-item {
+  height: 610px;
+}
+
+.query-menu {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  margin-top: -5px;
+}
+
+.btn-change-query {
+  border-radius: 50% !important;
+  margin-left: 7px;
+}
+
+.label-query-menu {
+  display: table;
+  height: 100%;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.label-query-menu span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.sql-editors {
+  border: 1px solid black;
+}
+
+.report-content {
+  width: calc(100vw - 60px);
+  min-width: 800px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-60 {
+  width: 60%;
+}
+
+.width-50:first-child,
+.width-40:first-child,
+.width-60:first-child {
+  padding-right: 15px;
+}
+
+.width-50:last-child {
+  padding-left: 15px;
+}
+
+.modal-container-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-block {
+  height: 326px;
+  overflow-y: auto;
+}
+
+.report-content .record-list {
+  overflow-y: auto;
+  height: 490px;
+}
+
+.width-95 {
+  width: 97%;
+}
+
+.dashboard-content-left .Collapsible {
+  width: 97%;
+}
+
+.padding-bottom-5 {
+  padding-bottom: 10px;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}

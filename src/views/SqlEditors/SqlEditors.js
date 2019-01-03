@@ -29,7 +29,13 @@ import 'codemirror/mode/sql/sql.js';
 
 
 class SqlEditors extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const { updateQueryString, value } = this.props;
+
     return (
 
       // <CodeMirror
@@ -44,20 +50,16 @@ class SqlEditors extends Component {
       //   onChange={(editor, data, value) => {
       //   }}
       // />
-<CodeMirror
-  value='Select * from where 23'
-  options={{
-    mode: "text/x-sql",
-        theme: 'default',
-        lineNumbers: true
-      }}
-      
-  onChange={(editor, data, value) => {
-  }}
-/>
-      
-      
-
+    <CodeMirror
+      value={value}
+      options={{
+        mode: "text/x-sql",
+            theme: 'default',
+            lineNumbers: true
+          }}
+          
+      onChange={(editor, data, value) => {updateQueryString(value)}}
+    />
     );
   }
 }

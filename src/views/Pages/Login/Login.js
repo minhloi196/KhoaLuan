@@ -3,6 +3,8 @@ import { Alert, Button, Card, CardBody, CardGroup, Col, Container, Form, Input, 
 import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import Loader from 'react-loader-spinner'
+
 import {
   requestLogin,
 } from '../../../actions/loginActions';
@@ -23,6 +25,10 @@ class Login extends Component {
     this.renderRedirect = this.renderRedirect.bind(this);
     this.renderAlert = this.renderAlert.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.requestLogin();
   }
 
   onInputChange(name, event) {
@@ -71,8 +77,20 @@ class Login extends Component {
   }
 
   render() {
+    const { loginStatus } = this.props;
     return (
       <div className="app flex-row align-items-center">
+        {
+          loginStatus === 'loading' &&
+          <div className="loader-wrapper">
+            <Loader 
+              type="Oval"
+              color="#00BFFF"
+              height="100"
+              width="100"
+            />
+          </div>
+        }
         {this.renderRedirect()}
         <Container>
           <Row className="justify-content-center">
@@ -126,9 +144,9 @@ class Login extends Component {
                             }}
                           >Login</Button>
                         </Col>
-                        <Col xs="6" className="text-right">
+                        {/* <Col xs="6" className="text-right">
                           <Button color="link" className="px-0">Forgot password?</Button>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </Form>
                   </CardBody>

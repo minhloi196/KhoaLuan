@@ -1,0 +1,98 @@
+/* Scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/*  */
+.second-header {
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  padding-left: 153px;
+}
+
+.second-header .nav .nav-item a{
+  color: gray;
+}
+
+.second-header
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: black;
+  background-color: #fff !important;
+  border-bottom: 2px solid black;
+  border-radius: 0 !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #20a8d8 !important;
+}
+
+.label-data-source {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.loader-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #39394078;
+  z-index: 1090;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-float-both {
+  clear: both;
+}
+
+/* Analyze Aside */
+
+.block-dropdown {
+  margin-bottom: 1rem;
+}
+
+.analyze-chart-wrapper {
+  z-index: 100;
+  margin-top: 40px;
+}
+
+.btn-add-axis {
+  border-radius: 50% !important;
+  display: inline;
+  /* margin-left: 7px; */
+}
+
+.btn-add-axis .fa-plus {
+  color: #fff;
+}

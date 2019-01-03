@@ -1,0 +1,6 @@
+{
+  "name": "CorporateHealth",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CorporateHealth.js"
+}

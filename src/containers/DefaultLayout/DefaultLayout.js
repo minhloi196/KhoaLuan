@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 
 import {
   AppAside,
@@ -18,9 +18,10 @@ import {
 import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
-import DefaultAside from './DefaultAside';
+// import DefaultAside from './DefaultAside';
 import DefaultFooter from './DefaultFooter';
 import DefaultHeader from './DefaultHeader';
+import SecondHeader from './SecondHeader';
 import { connect } from "react-redux";
 
 class DefaultLayout extends Component {
@@ -30,9 +31,9 @@ class DefaultLayout extends Component {
 
   render() {
     const { loginStatus } = this.props;
-    // if (loginStatus === 'failed') {
-    //   return <Redirect from="/" to="/login" />
-    // } else {
+    if (loginStatus === 'failed') {
+      return <Redirect from="/" to="/login" />
+    } else {
       return (
         <div className="app">
           <AppHeader fixed>
@@ -46,8 +47,11 @@ class DefaultLayout extends Component {
               <AppSidebarFooter />
               <AppSidebarMinimizer />
             </AppSidebar> */}
+            
+            
             <main className="main">
-              <AppBreadcrumb appRoutes={routes}/>
+              {/* <SecondHeader /> */}
+              {/* <AppBreadcrumb appRoutes={routes}/> */}
               <Container fluid>
                 <Switch>
                   {routes.map((route, idx) => {
@@ -61,9 +65,9 @@ class DefaultLayout extends Component {
                 </Switch>
               </Container>
             </main>
-            <AppAside fixed hidden>
+            {/* <AppAside fixed hidden>
               <DefaultAside />
-            </AppAside>
+            </AppAside> */}
           </div>
           <AppFooter>
             <DefaultFooter />
@@ -71,7 +75,7 @@ class DefaultLayout extends Component {
         </div>
       );
     }
-  // }
+  }
 }
 
 const mapStateToProps = state => {

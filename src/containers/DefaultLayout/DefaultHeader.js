@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Badge, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
+import { requestLogout } from '../../actions/logoutActions';
 
 const propTypes = {
   children: PropTypes.node,
@@ -18,15 +21,28 @@ class DefaultHeader extends Component {
 
     this.state = {
       navItemSelected: 1,
+      userName: ''
     };
 
     this.onClickNavItem = this.onClickNavItem.bind(this);
+    this.logoutFunct = this.logoutFunct.bind(this);
+  }
+
+  componentWillMount() {
+    const user = sessionStorage.getItem('userName');
+    this.setState({
+      userName: user,
+    })
   }
 
   onClickNavItem(value) {
     this.setState({
       navItemSelected: value,
     })
+  }
+
+  logoutFunct() {
+    this.props.requestLogout();
   }
 
   render() {
@@ -48,17 +64,23 @@ class DefaultHeader extends Component {
             <NavLink href="/" onClick={() => this.onClickNavItem(1)} active={this.state.navItemSelected === 1}>Manage</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="#" onClick={() => this.onClickNavItem(2)} active={this.state.navItemSelected === 2}>Analyze</NavLink>
+            <NavLink href="#/analyze" onClick={() => this.onClickNavItem(2)} active={this.state.navItemSelected === 2}>Analyze</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="#/charts" onClick={() => this.onClickNavItem(3)} active={this.state.navItemSelected === 3}>Reporting</NavLink>
+            <NavLink href="#/report" onClick={() => this.onClickNavItem(3)} active={this.state.navItemSelected === 3}>Reporting</NavLink>
+          </NavItem>
+          <NavItem className="px-3">
+            <NavLink href="#/comparision" onClick={() => this.onClickNavItem(4)} active={this.state.navItemSelected === 4}>Comparision</NavLink>
+          </NavItem>
+          <NavItem className="px-3">
+            <NavLink href="#/corporate-health" onClick={() => this.onClickNavItem(5)} active={this.state.navItemSelected === 5}>Corporate Health</NavLink>
           </NavItem>
         </Nav>
 
 
         <Nav className="ml-auto" navbar>
           <NavItem className="d-md-down-none">
-            <NavLink href="#"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
+            <NavLink>{this.state.userName}</NavLink>
           </NavItem>
           {/* <NavItem className="d-md-down-none">
             <NavLink href="#"><i className="icon-list"></i></NavLink>
@@ -77,13 +99,13 @@ class DefaultHeader extends Component {
               <DropdownItem><i className="fa fa-tasks"></i> Tasks<Badge color="danger">42</Badge></DropdownItem>
               <DropdownItem><i className="fa fa-comments"></i> Comments<Badge color="warning">42</Badge></DropdownItem> */}
               <DropdownItem header tag="div" className="text-center"><strong>Settings</strong></DropdownItem>
-              <DropdownItem><i className="fa fa-user"></i> Profile</DropdownItem>
+              {/* <DropdownItem><i className="fa fa-user"></i> Profile</DropdownItem> */}
               {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
               {/* <DropdownItem><i className="fa fa-usd"></i> Payments<Badge color="secondary">42</Badge></DropdownItem> */}
               {/* <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem> */}
               {/* <DropdownItem divider /> */}
               {/* <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem> */}
-              <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+              <DropdownItem onClick={this.logoutFunct}><i className="fa fa-lock"></i> Logout</DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>
@@ -97,4 +119,14 @@ class DefaultHeader extends Component {
 DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
-export default DefaultHeader;
+const mapStateToProps = state => {
+  return {  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    requestLogout: bindActionCreators(requestLogout, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DefaultHeader);

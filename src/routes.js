@@ -27,6 +27,11 @@ const Dashboard = Loadable({
   loading: Loading,
 });
 
+const Analyze = Loadable({
+  loader: () => import('./views/Analyze'),
+  loading: Loading,
+});
+
 const SqlEditors = Loadable({
   loader: () => import('./views/SqlEditors'),
   loading: Loading,
@@ -37,15 +42,27 @@ const GitUser = Loadable({
   loading: Loading,
 });
 
+const Comparision = Loadable({
+  loader: () => import('./views/Comparision'),
+  loading: Loading,
+});
+
+const CorporateHealth = Loadable({
+  loader: () => import('./views/CorporateHealth'),
+  loading: Loading,
+});
 
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/analyze', name: 'Dashboard', component: Analyze },
   { path: '/sql-editors', name: 'SqlEditors', component: SqlEditors },
-  { path: '/charts', name: 'Charts', component: Charts },
+  { path: '/report', name: 'Charts', component: Charts },
+  { path: '/comparision', name: 'Comparision', component: Comparision},
   { path: '/git-users', name: 'GitUser', component: GitUser },
+  { path: '/corporate-health', name: 'Corporate Health', component: CorporateHealth },
 ];
 
 export default routes;

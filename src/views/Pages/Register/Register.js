@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Alert, Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import Loader from 'react-loader-spinner';
+
+import {
+  requestRegister,
+} from '../../../actions/registerAction';
 
 class Register extends Component {
   constructor(props) {
@@ -77,23 +84,58 @@ class Register extends Component {
       return;
     }
 
-    this.setState({
-      error: true,
-      message: '',
-    })
+    this.props.requestRegister(this.state.info);
   }
 
-  renderAlert() {
-    if (this.state.error) {
+  renderAlert(error, message) {
+    if (error) {
       return <Alert color="warning" className="text-center">
-        {this.state.message}
-    </Alert>
+        {message}
+      </Alert>
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      if (nextProps.registerStatus === 'failed') {
+        this.setState({
+          error: true,
+          message: nextProps.message,
+        })
+      }
+
+      if (nextProps.registerStatus === 'success') {
+        console.log('run success')
+        let info = {
+          userName: '',
+          email: '',
+          password: '',
+          rPassword: '',
+        };
+        this.setState({
+          error: true,
+          message: 'register success',
+          info,
+        })
+      }
     }
   }
 
   render() {
+    const { registerStatus } = this.props;
     return (
       <div className="app flex-row align-items-center">
+        {
+          registerStatus === 'loading' &&
+          <div className="loader-wrapper">
+            <Loader 
+              type="Oval"
+              color="#00BFFF"
+              height="100"
+              width="100"
+            />
+          </div>
+        }
         {this.renderRedirect()}
         <Container>
           <Row className="justify-content-center">
@@ -103,7 +145,7 @@ class Register extends Component {
                   <Form>
                     <h1>Register</h1>
                     <p className="text-muted">Create your account</p>
-                    {this.renderAlert()}
+                    {this.renderAlert(this.state.error, this.state.message)}
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
@@ -112,6 +154,7 @@ class Register extends Component {
                       </InputGroupAddon>
                       <Input
                         type="text"
+                        value={this.state.info.userName}
                         placeholder="Username"
                         autoComplete="username"
                         onChange={(value) => {
@@ -125,6 +168,7 @@ class Register extends Component {
                       </InputGroupAddon>
                       <Input
                         type="text"
+                        value={this.state.info.email}
                         placeholder="Email"
                         autoComplete="email"
                         onChange={(value) => {
@@ -140,6 +184,7 @@ class Register extends Component {
                       </InputGroupAddon>
                       <Input
                         type="password"
+                        value={this.state.info.password}
                         placeholder="Password"
                         autoComplete="new-password"
                         onChange={(value) => {
@@ -155,6 +200,7 @@ class Register extends Component {
                       </InputGroupAddon>
                       <Input
                         type="password"
+                        value={this.state.info.rPassword}
                         placeholder="Repeat password"
                         autoComplete="new-password"
                         onChange={(value) => {
@@ -193,4 +239,17 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => {
+  return {
+    registerStatus: state.registerReducer.registerStatus,
+    message: state.registerReducer.message,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    requestRegister: bindActionCreators(requestRegister, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
