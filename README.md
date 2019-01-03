@@ -1,6 +1,6 @@
 # Web BI
 
-Log: Add SQL feature for react
+Log: Add SQL feature for reacts
 
 ## Table of Contents
 
