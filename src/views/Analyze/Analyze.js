@@ -23,6 +23,7 @@ import AnalyzeAside from './AnalyzeAside';
 import EChart from '../Charts/EChart';
 import ModalMessageError from '../Base/Modal/ModalMessageError';
 import ModalExportData from '../Base/Modal/ModalExportData';
+import ModalError from '../Base/Modal/ModalError';
 
 class Analyze extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class Analyze extends Component {
     this.selectDataBase = this.selectDataBase.bind(this);
     this.showModalExportData = this.showModalExportData.bind(this);
     this.closeModalExportData = this.closeModalExportData.bind(this);
+    this.hideErrorModal = this.hideErrorModal.bind(this);
   }
 
   componentWillMount() {
@@ -51,6 +53,25 @@ class Analyze extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.loadingListRecord !== this.props.loadingListRecord &&
+      nextProps.loadingListRecord === 'failed') {
+        this.setState({
+          renderAlert: true,
+        })
+      }
+
+    if (nextProps.loadingListRecord !== this.props.loadingListRecord &&
+      nextProps.loadingListRecord === 'success') {
+        this.setState({
+          renderAlert: false,
+        })
+      }
+  }
+
+  hideErrorModal() {
+    this.setState({
+      renderAlert: false,
+    })
   }
 
   // onChangeTable(tableName) {
@@ -234,6 +255,12 @@ class Analyze extends Component {
           showModal={this.state.showModalExportData}
           closeFunct={this.closeModalExportData}
           data={listRecord}
+        />
+
+        <ModalError
+          message={'Can not get data with current query string!'}
+          showModal={this.state.renderAlert}
+          hideErrorModal={this.hideErrorModal}
         />
       </div>
     );

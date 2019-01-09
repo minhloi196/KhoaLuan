@@ -20,6 +20,7 @@ import RecordList from '../Table/RecordList';
 import ChartAside from './ChartAside';
 import ModalExportData from '../Base/Modal/ModalExportData';
 import EChart from './EChart';
+import ModalError from '../Base/Modal/ModalError';
 
 class Charts extends Component {
 
@@ -40,6 +41,7 @@ class Charts extends Component {
     this.createChart = this.createChart.bind(this);
     this.showModalExportData = this.showModalExportData.bind(this);
     this.closeModalExportData = this.closeModalExportData.bind(this);
+    this.hideErrorModal = this.hideErrorModal.bind(this);
   }
 
   componentWillMount() {
@@ -84,9 +86,27 @@ class Charts extends Component {
     });
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   console.log('----------check me-------', nextProps.listRecord)
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.loadingListRecord !== this.props.loadingListRecord &&
+      nextProps.loadingListRecord === 'failed') {
+        this.setState({
+          renderAlert: true,
+        })
+      }
+
+    if (nextProps.loadingListRecord !== this.props.loadingListRecord &&
+      nextProps.loadingListRecord === 'success') {
+        this.setState({
+          renderAlert: false,
+        })
+      }
+  }
+
+  hideErrorModal() {
+    this.setState({
+      renderAlert: false,
+    })
+  }
 
   componentWillUnmount() {
     this.props.clearData();
@@ -267,6 +287,12 @@ class Charts extends Component {
             closeFunct={this.closeModalExportData}
             data={listRecord}
           />
+
+          <ModalError
+          message={'Can not get data with current query string!'}
+          showModal={this.state.renderAlert}
+          hideErrorModal={this.hideErrorModal}
+        />
         </div>
       </div>
     );

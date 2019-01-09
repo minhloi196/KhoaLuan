@@ -8,6 +8,7 @@ import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler }
 import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 import { requestLogout } from '../../actions/logoutActions';
+import ModalHelp from '../../views/Base/Modal/ModalHelp';
 
 const propTypes = {
   children: PropTypes.node,
@@ -26,12 +27,15 @@ class DefaultHeader extends Component {
 
     this.onClickNavItem = this.onClickNavItem.bind(this);
     this.logoutFunct = this.logoutFunct.bind(this);
+    this.onClickHelp = this.onClickHelp.bind(this);
+    this.hideHelpModal = this.hideHelpModal.bind(this);
   }
 
   componentWillMount() {
     const user = sessionStorage.getItem('userName');
     this.setState({
       userName: user,
+      showHelpModal: false,
     })
   }
 
@@ -43,6 +47,18 @@ class DefaultHeader extends Component {
 
   logoutFunct() {
     this.props.requestLogout();
+  }
+
+  onClickHelp() {
+    this.setState({
+      showHelpModal: true
+    })
+  }
+
+  hideHelpModal() {
+    this.setState({
+      showHelpModal: false
+    })
   }
 
   render() {
@@ -80,6 +96,12 @@ class DefaultHeader extends Component {
 
         <Nav className="ml-auto" navbar>
           <NavItem className="d-md-down-none">
+            <NavLink
+              className="help"
+              onClick={() => this.onClickHelp()}
+            >Help</NavLink>
+          </NavItem>
+          <NavItem className="d-md-down-none">
             <NavLink>{this.state.userName}</NavLink>
           </NavItem>
           {/* <NavItem className="d-md-down-none">
@@ -109,8 +131,15 @@ class DefaultHeader extends Component {
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>
-        <AppAsideToggler className="d-md-down-none" />
+        {
+          this.state.navItemSelected !== 1 &&
+          <AppAsideToggler className="d-md-down-none" />
+        }
         {/*<AppAsideToggler className="d-lg-none" mobile />*/}
+        <ModalHelp
+          showModal={this.state.showHelpModal}
+          hideModal={this.hideHelpModal}
+        />
       </React.Fragment>
     );
   }

@@ -13,6 +13,8 @@ import secondRecordList from './getDataSetSecond';
 import deleteDB from './deleteDatabase';
 import getTable1 from './getTable1Reducer';
 import getTable2 from './getTable2Reducer';
+import getTable3 from './getTable3Reducer';
+import getTable4 from './getTable4Reducer';
 
 export default combineReducers({
   loginReducer,
@@ -28,5 +30,7 @@ export default combineReducers({
   secondRecordList,
   deleteDB,
   getTable1,
-  getTable2
+  getTable2,
+  getTable3,
+  getTable4
 })

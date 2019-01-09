@@ -1,27 +1,27 @@
 import axios from 'axios';
 
 import { SERVER_HOST } from '../setting';
-import { GET_TABLE_2_API } from '../constant/Apis';
+import { GET_TABLE_4_API } from '../constant/Apis';
 import {
-  GET_TABLE_2,
-  GET_TABLE_2_SUCCESS,
-  GET_TABLE_2_FAILED,
+  GET_TABLE_4,
+  GET_TABLE_4_SUCCESS,
+  GET_TABLE_4_FAILED,
 } from "../constant/ActionTypes";
 import { setAuth } from '../utils';
 
-export const requestGetTable2 = (databaseName, tableName) => {
+export const requestGetTable4 = (databaseName, tableName) => {
   let userName = sessionStorage.getItem('userName');
-  let url = GET_TABLE_2_API;
+  let url = GET_TABLE_4_API;
   url = url.replace('{user}', userName);
   url = url.replace('{databasename}', databaseName);
   url = url.replace('{tablename}', tableName);
   let auth = setAuth();
 
-  console.log('call api get table 2')
+  console.log('call api get table 4')
 
   return (dispatch) => {
     dispatch({
-      type: GET_TABLE_2,
+      type: GET_TABLE_4,
     });
     setTimeout( () => {
     axios({
@@ -35,16 +35,16 @@ export const requestGetTable2 = (databaseName, tableName) => {
       }
     })
     .then((response) => {
-      console.log('=====get table 2========')
+      console.log('=====get table 4========')
       console.log(response)
       dispatch({
-        type: GET_TABLE_2_SUCCESS,
+        type: GET_TABLE_4_SUCCESS,
         data: response.data
       })
     })
     .catch((err) => {
       dispatch({
-        type: GET_TABLE_2_FAILED,
+        type: GET_TABLE_4_FAILED,
         messageError: err
       })
     })

@@ -60,13 +60,15 @@ class EChartPie extends Component {
       // series data format [{name: [string], value: [number]}]
 
       let seriesData = [];
-      for (let i = 0; i < options.xAxisData.length; i++) {
-        let item = {
-          name: options.xAxisData[i],
-          value: options.yAxisData[i],
-        }
+      if (options.xAxisData) {
+        for (let i = 0; i < options.xAxisData.length; i++) {
+          let item = {
+            name: options.xAxisData[i],
+            value: options.yAxisData[i],
+          }
 
-        seriesData.push(Object.assign({}, item));
+          seriesData.push(Object.assign({}, item));
+        }
       }
 
       return {

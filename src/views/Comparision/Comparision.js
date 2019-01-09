@@ -19,6 +19,7 @@ import RecordList from '../Table/RecordList';
 import ComparisionAside from './ComparisionAside';
 import EChart from '../Charts/EChart';
 import ModalExportData from '../Base/Modal/ModalExportData';
+import ModalError from '../Base/Modal/ModalError';
 
 class Comparision extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class Comparision extends Component {
     this.showModalExportData2 = this.showModalExportData2.bind(this);
     this.closeModalExportData1 = this.closeModalExportData1.bind(this);
     this.closeModalExportData2 = this.closeModalExportData2.bind(this);
+    this.hideErrorModal = this.hideErrorModal.bind(this);
   }
 
   componentWillMount() {
@@ -52,6 +54,29 @@ class Comparision extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if ((nextProps.loadingFirstDataSet !== this.props.loadingFirstDataSet &&
+      nextProps.loadingFirstDataSet === 'failed') ||
+      (nextProps.loadingSecondDataSet !== this.props.loadingSecondDataSet &&
+      nextProps.loadingSecondDataSet === 'failed')) {
+        this.setState({
+          renderAlert: true,
+        })
+      }
+
+    if ((nextProps.loadingFirstDataSet !== this.props.loadingFirstDataSet &&
+      nextProps.loadingFirstDataSet === 'success') &&
+      nextProps.loadingSecondDataSet !== this.props.loadingFirstDataSet &&
+      nextProps.loadingSecondDataSet === 'success') {
+        this.setState({
+          renderAlert: false,
+        })
+      }
+  }
+
+  hideErrorModal() {
+    this.setState({
+      renderAlert: false,
+    })
   }
 
   clickBtnChangeQueryStringFirst() {
@@ -352,6 +377,12 @@ class Comparision extends Component {
             showModal={this.state.showModalExportData2}
             closeFunct={this.closeModalExportData2}
             data={secondDataSet}
+          />
+
+          <ModalError
+            message={'Can not get data with current query string!'}
+            showModal={this.state.renderAlert}
+            hideErrorModal={this.hideErrorModal}
           />
 
         </div>

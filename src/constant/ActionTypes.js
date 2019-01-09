@@ -73,3 +73,11 @@ export const GET_TABLE_1_FAILED = '@getTable/GET_TABLE_1_FAILED';
 export const GET_TABLE_2 = '@getTable/GET_TABLE_2';
 export const GET_TABLE_2_SUCCESS = '@getTable/GET_TABLE_2_SUCCESS';
 export const GET_TABLE_2_FAILED = '@getTable/GET_TABLE_2_FAILED';
+
+export const GET_TABLE_3 = '@getTable/GET_TABLE_3';
+export const GET_TABLE_3_SUCCESS = '@getTable/GET_TABLE_3_SUCCESS';
+export const GET_TABLE_3_FAILED = '@getTable/GET_TABLE_3_FAILED';
+
+export const GET_TABLE_4 = '@getTable/GET_TABLE_4';
+export const GET_TABLE_4_SUCCESS = '@getTable/GET_TABLE_4_SUCCESS';
+export const GET_TABLE_4_FAILED = '@getTable/GET_TABLE_4_FAILED';

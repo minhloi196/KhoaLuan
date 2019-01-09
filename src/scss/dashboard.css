@@ -262,3 +262,13 @@
 .margin-left-20 {
   margin-left: 20px;
 }
+
+.help {
+  color: #20a8d8 !important;
+  cursor: pointer;
+}
+
+.img-help {
+  max-width: 100%;
+  height: auto;
+}

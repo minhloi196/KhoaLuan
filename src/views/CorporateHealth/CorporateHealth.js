@@ -16,6 +16,8 @@ import { clearData } from '../../actions/clearData';
 import { requestFirstDataSet, requestSecondDataSet} from '../../actions/getComparisionData';
 import { requestGetTable1 } from '../../actions/getTable1';
 import { requestGetTable2 } from '../../actions/getTable2';
+import { requestGetTable3 } from '../../actions/getTable3';
+import { requestGetTable4 } from '../../actions/getTable4';
 import ModalChangeQueryString from '../Base/Modal/ModalChangeQueryString';
 import RecordList from '../Table/RecordList';
 import CorporateHealthAside from './CorporateHealthAside';
@@ -45,11 +47,12 @@ class CorporateHealth extends Component {
     this.hideErrorModal = this.hideErrorModal.bind(this);
     this.renderTable1 = this.renderTable1.bind(this);
     this.renderTable2 = this.renderTable2.bind(this);
+    this.renderTable3 = this.renderTable3.bind(this);
+    this.renderTable4 = this.renderTable4.bind(this);
   }
 
   componentWillMount() {
     this.props.requestGetAllDB();
-    // this.props.getTable1('test1', 'tinh_hinh_tai_chinh');
     console.log('check props', this.props)
   }
 
@@ -110,9 +113,11 @@ class CorporateHealth extends Component {
   }
 
   applySetting(selectdDB, selectedTable) {
-    const { getTable1, getTable2 } = this.props;
+    const { getTable1, getTable2, getTable3, getTable4 } = this.props;
     getTable1(selectdDB, selectedTable);
     getTable2(selectdDB, selectedTable);
+    getTable3(selectdDB, selectedTable);
+    getTable4(selectdDB, selectedTable);
   }
 
   hideErrorModal() {
@@ -121,184 +126,43 @@ class CorporateHealth extends Component {
     })
   }
 
-  // renderTable1() {
-  //   const { table1Data } = this.props;
-
-  //   if (table1Data.static1 &&
-  //     table1Data.static2 &&
-  //     table1Data.static3 &&
-  //     table1Data.static4 &&
-  //     table1Data.static5
-  //     ) {
-  //       return (
-  //         <tbody>
-  //           <tr>
-  //             <td>Số vòng luân chuyển của toàn bộ vốn</td>
-  //             <td>{table1Data.static1.startYear}</td>
-  //             <td>{table1Data.static1.endYear}</td>
-  //             <td>{table1Data.static1.difference}</td>
-  //             <td>{table1Data.static1.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Kỳ luân chuyển vốn kinh doanh</td>
-  //             <td>{table1Data.static2.startYear}</td>
-  //             <td>{table1Data.static2.endYear}</td>
-  //             <td>{table1Data.static2.difference}</td>
-  //             <td>{table1Data.static2.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Số vòng luân chuyển vốn lưu động</td>
-  //             <td>{table1Data.static3.startYear}</td>
-  //             <td>{table1Data.static3.endYear}</td>
-  //             <td>{table1Data.static3.difference}</td>
-  //             <td>{table1Data.static3.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Kỳ luân chuyển vốn lưu động</td>
-  //             <td>{table1Data.static5.startYear}</td>
-  //             <td>{table1Data.static5.endYear}</td>
-  //             <td>{table1Data.static5.difference}</td>
-  //             <td>{table1Data.static5.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Số vòng luân chuyển vốn dự trữ</td>
-  //             <td>{table1Data.static5.startYear}</td>
-  //             <td>{table1Data.static5.endYear}</td>
-  //             <td>{table1Data.static5.difference}</td>
-  //             <td>{table1Data.static5.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Kỳ luân chuyển vốn dự trữ</td>
-  //             <td>{table1Data.static5.startYear}</td>
-  //             <td>{table1Data.static5.endYear}</td>
-  //             <td>{table1Data.static5.difference}</td>
-  //             <td>{table1Data.static5.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Số vòng luân chuyển vốn phải thu</td>
-  //             <td>{table1Data.static5.startYear}</td>
-  //             <td>{table1Data.static5.endYear}</td>
-  //             <td>{table1Data.static5.difference}</td>
-  //             <td>{table1Data.static5.ratio}</td>
-  //           </tr>
-  //           <tr>
-  //             <td>Số kỳ luân chuyển vốn phải thu</td>
-  //             <td>{table1Data.static5.startYear}</td>
-  //             <td>{table1Data.static5.endYear}</td>
-  //             <td>{table1Data.static5.difference}</td>
-  //             <td>{table1Data.static5.ratio}</td>
-  //           </tr>
-  //         </tbody>
-  //       )
-  //     }
-
-  //   return (
-  //     <tbody>
-  //       <tr>
-  //         <td>Số vòng luân chuyển của toàn bộ vốn</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Kỳ luân chuyển vốn kinh doanh</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Số vòng luân chuyển vốn lưu động</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Kỳ luân chuyển vốn lưu động</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Số vòng luân chuyển vốn dự trữ</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Kỳ luân chuyển vốn dự trữ</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Số vòng luân chuyển vốn phải thu</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //       <tr>
-  //         <td>Số kỳ luân chuyển vốn phải thu</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //         <td>null</td>
-  //       </tr>
-  //     </tbody>
-  //   )
-  // }
-
   renderTable1() {
     const { table1Data } = this.props;
 
     if (table1Data.static1 &&
       table1Data.static2 &&
       table1Data.static3 &&
-      table1Data.static4 &&
-      table1Data.static5
+      table1Data.static4
       ) {
         return (
           <tbody>
             <tr>
-              <td>Debt ratio on assets</td>
+              <td>Profitability factor</td>
               <td>{table1Data.static1.startYear}</td>
               <td>{table1Data.static1.endYear}</td>
               <td>{table1Data.static1.difference}</td>
               <td>{table1Data.static1.ratio}</td>
             </tr>
             <tr>
-              <td>Debt ratio on equity</td>
+              <td>Basic profitability coefficient</td>
               <td>{table1Data.static2.startYear}</td>
               <td>{table1Data.static2.endYear}</td>
               <td>{table1Data.static2.difference}</td>
               <td>{table1Data.static2.ratio}</td>
             </tr>
             <tr>
-              <td>Debt ratio on charter capital</td>
+              <td>Economic profitability coefficient</td>
               <td>{table1Data.static3.startYear}</td>
               <td>{table1Data.static3.endYear}</td>
               <td>{table1Data.static3.difference}</td>
               <td>{table1Data.static3.ratio}</td>
             </tr>
             <tr>
-              <td>Short-term debt ratio on total debt</td>
+              <td>Financial profitability coefficient</td>
               <td>{table1Data.static4.startYear}</td>
               <td>{table1Data.static4.endYear}</td>
               <td>{table1Data.static4.difference}</td>
               <td>{table1Data.static4.ratio}</td>
-            </tr>
-            <tr>
-              <td>Maturity debt ratio on long-term debt</td>
-              <td>{table1Data.static5.startYear}</td>
-              <td>{table1Data.static5.endYear}</td>
-              <td>{table1Data.static5.difference}</td>
-              <td>{table1Data.static5.ratio}</td>
             </tr>
           </tbody>
         )
@@ -307,35 +171,28 @@ class CorporateHealth extends Component {
     return (
       <tbody>
         <tr>
-          <td>Debt ratio on assets</td>
+          <td>Profitability factor</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
         </tr>
         <tr>
-          <td>Debt ratio on equity</td>
+          <td>Basic profitability coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
         </tr>
         <tr>
-          <td>Debt ratio on charter capital</td>
+          <td>Economic profitability coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
         </tr>
         <tr>
-          <td>Short-term debt ratio on total debt</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Maturity debt ratio on long-term debt</td>
+          <td>Financial profitability coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
@@ -351,53 +208,37 @@ class CorporateHealth extends Component {
     if (table2Data.static1 &&
       table2Data.static2 &&
       table2Data.static3 &&
-      table2Data.static4 &&
-      table2Data.static5 &&
-      table2Data.static6
+      table2Data.static4
       ) {
         return (
           <tbody>
             <tr>
-              <td>Total assets</td>
+              <td>Overall solvency coefficient</td>
               <td>{table2Data.static1.startYear}</td>
               <td>{table2Data.static1.endYear}</td>
               <td>{table2Data.static1.difference}</td>
               <td>{table2Data.static1.ratio}</td>
             </tr>
             <tr>
-              <td>Short-term investment coefficient</td>
+              <td>Short-term solvency coefficient</td>
               <td>{table2Data.static2.startYear}</td>
               <td>{table2Data.static2.endYear}</td>
               <td>{table2Data.static2.difference}</td>
               <td>{table2Data.static2.ratio}</td>
             </tr>
             <tr>
-              <td>Fixed asset investment coefficients</td>
+              <td>Quick solvency coefficient</td>
               <td>{table2Data.static3.startYear}</td>
               <td>{table2Data.static3.endYear}</td>
               <td>{table2Data.static3.difference}</td>
               <td>{table2Data.static3.ratio}</td>
             </tr>
             <tr>
-              <td>Financial investment coefficients</td>
+              <td>Instant solvency coefficient</td>
               <td>{table2Data.static4.startYear}</td>
               <td>{table2Data.static4.endYear}</td>
               <td>{table2Data.static4.difference}</td>
               <td>{table2Data.static4.ratio}</td>
-            </tr>
-            <tr>
-              <td>Real estate investment coefficients</td>
-              <td>{table2Data.static5.startYear}</td>
-              <td>{table2Data.static5.endYear}</td>
-              <td>{table2Data.static5.difference}</td>
-              <td>{table2Data.static5.ratio}</td>
-            </tr>
-            <tr>
-              <td>Short-term asset investment ratio compared to long-term assets</td>
-              <td>{table2Data.static6.startYear}</td>
-              <td>{table2Data.static6.endYear}</td>
-              <td>{table2Data.static6.difference}</td>
-              <td>{table2Data.static6.ratio}</td>
             </tr>
           </tbody>
         )
@@ -406,42 +247,28 @@ class CorporateHealth extends Component {
     return (
       <tbody>
         <tr>
-          <td>Total assets</td>
+          <td>Overall solvency coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
         </tr>
         <tr>
-          <td>Short-term investment coefficient</td>
+          <td>Short-term solvency coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
         </tr>
         <tr>
-          <td>Fixed asset investment coefficients</td>
+          <td>Quick solvency coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
         </tr>
         <tr>
-          <td>Financial investment coefficients</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Real estate investment coefficients</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Short-term asset investment ratio compared to long-term assets</td>
+          <td>Instant solvency coefficient</td>
           <td>null</td>
           <td>null</td>
           <td>null</td>
@@ -450,6 +277,189 @@ class CorporateHealth extends Component {
       </tbody>
     )
   }
+
+  renderTable3() {
+    const { table3Data } = this.props;
+
+    if (table3Data.static1 &&
+      table3Data.static2 &&
+      table3Data.static3 &&
+      table3Data.static4 &&
+      table3Data.static5 &&
+      table3Data.static6
+      ) {
+        return (
+          <tbody>
+            <tr>
+              <td>Receivables turnover</td>
+              <td>{table3Data.static1.startYear}</td>
+              <td>{table3Data.static1.endYear}</td>
+              <td>{table3Data.static1.difference}</td>
+              <td>{table3Data.static1.ratio}</td>
+            </tr>
+            <tr>
+              <td>Average collection period</td>
+              <td>{table3Data.static2.startYear}</td>
+              <td>{table3Data.static2.endYear}</td>
+              <td>{table3Data.static2.difference}</td>
+              <td>{table3Data.static2.ratio}</td>
+            </tr>
+            <tr>
+              <td>Number of inventory turns</td>
+              <td>{table3Data.static3.startYear}</td>
+              <td>{table3Data.static3.endYear}</td>
+              <td>{table3Data.static3.difference}</td>
+              <td>{table3Data.static3.ratio}</td>
+            </tr>
+            <tr>
+              <td>Performance of fixed assets</td>
+              <td>{table3Data.static4.startYear}</td>
+              <td>{table3Data.static4.endYear}</td>
+              <td>{table3Data.static4.difference}</td>
+              <td>{table3Data.static4.ratio}</td>
+            </tr>
+            <tr>
+              <td>Performance using the entire property</td>
+              <td>{table3Data.static4.startYear}</td>
+              <td>{table3Data.static4.endYear}</td>
+              <td>{table3Data.static4.difference}</td>
+              <td>{table3Data.static4.ratio}</td>
+            </tr>
+            <tr>
+              <td>Performance of equity</td>
+              <td>{table3Data.static4.startYear}</td>
+              <td>{table3Data.static4.endYear}</td>
+              <td>{table3Data.static4.difference}</td>
+              <td>{table3Data.static4.ratio}</td>
+            </tr>
+          </tbody>
+        )
+      }
+
+    return (
+      <tbody>
+        <tr>
+          <td>Receivables turnover</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Average collection period</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Number of inventory turns</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Performance of fixed assets</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Performance using the entire property</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Performance of equity</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+      </tbody>
+    )
+  }
+  
+  renderTable4() {
+    const { table4Data } = this.props;
+
+    if (table4Data.static1 &&
+      table4Data.static2 &&
+      table4Data.static3 &&
+      table4Data.static4
+      ) {
+        return (
+          <tbody>
+            <tr>
+              <td>Ratio of debt on assets</td>
+              <td>{table4Data.static1.startYear}</td>
+              <td>{table4Data.static1.endYear}</td>
+              <td>{table4Data.static1.difference}</td>
+              <td>{table4Data.static1.ratio}</td>
+            </tr>
+            <tr>
+              <td>Debt to equity ratio</td>
+              <td>{table4Data.static2.startYear}</td>
+              <td>{table4Data.static2.endYear}</td>
+              <td>{table4Data.static2.difference}</td>
+              <td>{table4Data.static2.ratio}</td>
+            </tr>
+            <tr>
+              <td>Ratio of total assets on equity</td>
+              <td>{table4Data.static3.startYear}</td>
+              <td>{table4Data.static3.endYear}</td>
+              <td>{table4Data.static3.difference}</td>
+              <td>{table4Data.static3.ratio}</td>
+            </tr>
+            <tr>
+              <td>Short-term debt ratio on total debt</td>
+              <td>{table4Data.static4.startYear}</td>
+              <td>{table4Data.static4.endYear}</td>
+              <td>{table4Data.static4.difference}</td>
+              <td>{table4Data.static4.ratio}</td>
+            </tr>
+          </tbody>
+        )
+      }
+
+    return (
+      <tbody>
+        <tr>
+          <td>Ratio of debt on assets</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Debt to equity ratio</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Ratio of total assets on equity</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>Short-term debt ratio on total debt</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+          <td>null</td>
+        </tr>
+      </tbody>
+    )
+  }
+
 
   componentWillUnmount() {
     this.props.clearData();
@@ -474,6 +484,8 @@ class CorporateHealth extends Component {
       loadingTable1Data,
       table1ErrorMessage,
       loadingTable2Data,
+      loadingTable3Data,
+      loadingTable4Data
     } = this.props;
 
     return (
@@ -486,7 +498,9 @@ class CorporateHealth extends Component {
           loadingFirstDataSet === 'loading' ||
           loadingSecondDataSet === 'loading' ||
           loadingTable1Data === 'loading' ||
-          loadingTable2Data === 'loading'
+          loadingTable2Data === 'loading' ||
+          loadingTable3Data === 'loading' ||
+          loadingTable4Data === 'loading'
           ) &&
           <div className="loader-wrapper">
             <Loader 
@@ -502,7 +516,7 @@ class CorporateHealth extends Component {
           <div className="width-50">
             <Card>
               <CardHeader>
-              Capital Situation
+              Profitability situation of enterprises
               </CardHeader>
               <CardBody>
                 <Table responsive bordered>
@@ -519,12 +533,32 @@ class CorporateHealth extends Component {
                 </Table>
               </CardBody>
             </Card>
+
+            <Card>
+              <CardHeader>
+              Evaluate the operational ability of the enterprise
+              </CardHeader>
+              <CardBody>
+                <Table responsive bordered>
+                  <thead>
+                  <tr>
+                    <th>Targets</th>
+                    <th>The end of the year</th>
+                    <th>The begin of the year</th>
+                    <th>Difference</th>
+                    <th>Ratio</th>
+                  </tr>
+                  </thead>
+                  {this.renderTable3()}
+                </Table>
+              </CardBody>
+            </Card>
           </div>
 
           <div className="width-50">
             <Card>
               <CardHeader>
-                Property situation
+              Payment situation
               </CardHeader>
               <CardBody>
                 <Table responsive bordered>
@@ -541,11 +575,31 @@ class CorporateHealth extends Component {
                 </Table>
               </CardBody>
             </Card>
+
+            <Card>
+              <CardHeader>
+              Ratio of corporate leverage
+              </CardHeader>
+              <CardBody>
+                <Table responsive bordered>
+                  <thead>
+                  <tr>
+                    <th>Targets</th>
+                    <th>The end of the year</th>
+                    <th>The begin of the year</th>
+                    <th>Difference</th>
+                    <th>Ratio</th>
+                  </tr>
+                  </thead>
+                  {this.renderTable4()}
+                </Table>
+              </CardBody>
+            </Card>
           </div>
 
             {/* <Card>
               <CardHeader>
-              Funding situation
+              Evaluate the operational ability of the enterprise
               </CardHeader>
               <CardBody>
                 <Table responsive bordered>
@@ -811,7 +865,13 @@ const mapStateToProps = state => {
     table1ErrorMessage: state.getTable1.messageError,
     table2Data: state.getTable2.data,
     loadingTable2Data: state.getTable2.loadingTable,
-    table2ErrorMessage: state.getTable2.messageError
+    table2ErrorMessage: state.getTable2.messageError,
+    table3Data: state.getTable3.data,
+    loadingTable3Data: state.getTable3.loadingTable,
+    table3ErrorMessage: state.getTable3.messageError,
+    table4Data: state.getTable4.data,
+    loadingTable4Data: state.getTable4.loadingTable,
+    table4ErrorMessage: state.getTable4.messageError
   }
 }
 
@@ -827,6 +887,8 @@ const mapDispatchToProps = dispatch => {
     getSecondDataSet: bindActionCreators(requestSecondDataSet, dispatch),
     getTable1: bindActionCreators(requestGetTable1, dispatch),
     getTable2: bindActionCreators(requestGetTable2, dispatch),
+    getTable3: bindActionCreators(requestGetTable3, dispatch),
+    getTable4: bindActionCreators(requestGetTable4, dispatch),
   }
 }
 

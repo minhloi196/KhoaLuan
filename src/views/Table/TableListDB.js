@@ -20,7 +20,7 @@ class TableListDB extends Component {
               item.tables &&
               item.tables.map((table) => {
                 return (
-                  <div onClick={(e) => {
+                  <div key={table.tableName} onClick={(e) => {
                     e.preventDefault();
                     selectTable(item.databaseName, table.tableName);
                   }}>

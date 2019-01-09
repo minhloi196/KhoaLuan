@@ -19,3 +19,5 @@ export const DELETE_DATABASE_API = '/account/database/removeDB/{user}?databasena
 // corporate health
 export const GET_TABLE_1_API = '/account/corporatehealth/manager/caculateTable1/{user}?databasename={databasename}&tablename={tablename}';
 export const GET_TABLE_2_API = '/account/corporatehealth/manager/caculateTable2/{user}?databasename={databasename}&tablename={tablename}';
+export const GET_TABLE_3_API = '/account/corporatehealth/manager/caculateTable3/{user}?databasename={databasename}&tablename={tablename}';
+export const GET_TABLE_4_API = '/account/corporatehealth/manager/caculateTable4/{user}?databasename={databasename}&tablename={tablename}';
