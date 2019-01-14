@@ -131,10 +131,20 @@ class CorporateHealth extends Component {
 
     if (table1Data.static1 &&
       table1Data.static2 &&
-      table1Data.static3 &&
-      table1Data.static4
+      table1Data.static3
       ) {
         return (
+          <Table responsive bordered>
+            <thead>
+            <tr>
+              <th>Targets</th>
+              <th>The end of the year</th>
+              <th>The begin of the year</th>
+              <th>Difference</th>
+              <th>Ratio</th>
+            </tr>
+            </thead>
+                
           <tbody>
             <tr>
               <td>Profitability factor</td>
@@ -144,61 +154,51 @@ class CorporateHealth extends Component {
               <td>{table1Data.static1.ratio}</td>
             </tr>
             <tr>
-              <td>Basic profitability coefficient</td>
+              <td>Economic profitability coefficient</td>
               <td>{table1Data.static2.startYear}</td>
               <td>{table1Data.static2.endYear}</td>
               <td>{table1Data.static2.difference}</td>
               <td>{table1Data.static2.ratio}</td>
             </tr>
             <tr>
-              <td>Economic profitability coefficient</td>
+              <td>Financial profitability coefficient</td>
               <td>{table1Data.static3.startYear}</td>
               <td>{table1Data.static3.endYear}</td>
               <td>{table1Data.static3.difference}</td>
               <td>{table1Data.static3.ratio}</td>
             </tr>
-            <tr>
-              <td>Financial profitability coefficient</td>
-              <td>{table1Data.static4.startYear}</td>
-              <td>{table1Data.static4.endYear}</td>
-              <td>{table1Data.static4.difference}</td>
-              <td>{table1Data.static4.ratio}</td>
-            </tr>
           </tbody>
+          </Table>
         )
       }
 
     return (
-      <tbody>
-        <tr>
-          <td>Profitability factor</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Basic profitability coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Economic profitability coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Financial profitability coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-      </tbody>
+      // <tbody>
+      //   <tr>
+      //     <td>Profitability factor</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Economic profitability coefficient</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Financial profitability coefficient</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      // </tbody>
+      <Alert className="text-center" color="warning">
+        Please select databse and table in aside menu
+      </Alert>
     )
   }
 
@@ -211,6 +211,16 @@ class CorporateHealth extends Component {
       table2Data.static4
       ) {
         return (
+          <Table responsive bordered>
+            <thead>
+            <tr>
+              <th>Targets</th>
+              <th>The end of the year</th>
+              <th>The begin of the year</th>
+              <th>Difference</th>
+              <th>Ratio</th>
+            </tr>
+            </thead>
           <tbody>
             <tr>
               <td>Overall solvency coefficient</td>
@@ -241,40 +251,44 @@ class CorporateHealth extends Component {
               <td>{table2Data.static4.ratio}</td>
             </tr>
           </tbody>
+          </Table>
         )
       }
 
     return (
-      <tbody>
-        <tr>
-          <td>Overall solvency coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Short-term solvency coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Quick solvency coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Instant solvency coefficient</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-      </tbody>
+      // <tbody>
+      //   <tr>
+      //     <td>Overall solvency coefficient</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Short-term solvency coefficient</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Quick solvency coefficient</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Instant solvency coefficient</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      // </tbody>
+      <Alert className="text-center" color="warning">
+        Please select databse and table in aside menu
+      </Alert>
     )
   }
 
@@ -289,6 +303,16 @@ class CorporateHealth extends Component {
       table3Data.static6
       ) {
         return (
+          <Table responsive bordered>
+            <thead>
+            <tr>
+              <th>Targets</th>
+              <th>The end of the year</th>
+              <th>The begin of the year</th>
+              <th>Difference</th>
+              <th>Ratio</th>
+            </tr>
+            </thead>
           <tbody>
             <tr>
               <td>Receivables turnover</td>
@@ -333,54 +357,58 @@ class CorporateHealth extends Component {
               <td>{table3Data.static4.ratio}</td>
             </tr>
           </tbody>
+          </Table>
         )
       }
 
     return (
-      <tbody>
-        <tr>
-          <td>Receivables turnover</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Average collection period</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Number of inventory turns</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Performance of fixed assets</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Performance using the entire property</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Performance of equity</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-      </tbody>
+      // <tbody>
+      //   <tr>
+      //     <td>Receivables turnover</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Average collection period</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Number of inventory turns</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Performance of fixed assets</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Performance using the entire property</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Performance of equity</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      // </tbody>
+      <Alert className="text-center" color="warning">
+        Please select databse and table in aside menu
+      </Alert>
     )
   }
   
@@ -393,6 +421,16 @@ class CorporateHealth extends Component {
       table4Data.static4
       ) {
         return (
+          <Table responsive bordered>
+            <thead>
+            <tr>
+              <th>Targets</th>
+              <th>The end of the year</th>
+              <th>The begin of the year</th>
+              <th>Difference</th>
+              <th>Ratio</th>
+            </tr>
+            </thead>
           <tbody>
             <tr>
               <td>Ratio of debt on assets</td>
@@ -423,40 +461,44 @@ class CorporateHealth extends Component {
               <td>{table4Data.static4.ratio}</td>
             </tr>
           </tbody>
+          </Table>
         )
       }
 
     return (
-      <tbody>
-        <tr>
-          <td>Ratio of debt on assets</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Debt to equity ratio</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Ratio of total assets on equity</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-        <tr>
-          <td>Short-term debt ratio on total debt</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-          <td>null</td>
-        </tr>
-      </tbody>
+      // <tbody>
+      //   <tr>
+      //     <td>Ratio of debt on assets</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Debt to equity ratio</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Ratio of total assets on equity</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      //   <tr>
+      //     <td>Short-term debt ratio on total debt</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //     <td>null</td>
+      //   </tr>
+      // </tbody>
+      <Alert className="text-center" color="warning">
+        Please select databse and table in aside menu
+      </Alert>
     )
   }
 
@@ -519,7 +561,7 @@ class CorporateHealth extends Component {
               Profitability situation of enterprises
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                {/* <Table responsive bordered>
                   <thead>
                   <tr>
                     <th>Targets</th>
@@ -530,7 +572,8 @@ class CorporateHealth extends Component {
                   </tr>
                   </thead>
                   {this.renderTable1()}
-                </Table>
+                </Table> */}
+                {this.renderTable1()}
               </CardBody>
             </Card>
 
@@ -539,7 +582,7 @@ class CorporateHealth extends Component {
               Evaluate the operational ability of the enterprise
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                {/* <Table responsive bordered>
                   <thead>
                   <tr>
                     <th>Targets</th>
@@ -548,9 +591,9 @@ class CorporateHealth extends Component {
                     <th>Difference</th>
                     <th>Ratio</th>
                   </tr>
-                  </thead>
+                  </thead> */}
                   {this.renderTable3()}
-                </Table>
+                {/* </Table> */}
               </CardBody>
             </Card>
           </div>
@@ -561,7 +604,7 @@ class CorporateHealth extends Component {
               Payment situation
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                {/* <Table responsive bordered>
                   <thead>
                   <tr>
                     <th>Targets</th>
@@ -570,9 +613,9 @@ class CorporateHealth extends Component {
                     <th>Difference</th>
                     <th>Ratio</th>
                   </tr>
-                  </thead>
+                  </thead> */}
                   {this.renderTable2()}
-                </Table>
+                {/* </Table> */}
               </CardBody>
             </Card>
 
@@ -581,7 +624,7 @@ class CorporateHealth extends Component {
               Ratio of corporate leverage
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                {/* <Table responsive bordered>
                   <thead>
                   <tr>
                     <th>Targets</th>
@@ -590,9 +633,9 @@ class CorporateHealth extends Component {
                     <th>Difference</th>
                     <th>Ratio</th>
                   </tr>
-                  </thead>
+                  </thead> */}
                   {this.renderTable4()}
-                </Table>
+                {/* </Table> */}
               </CardBody>
             </Card>
           </div>

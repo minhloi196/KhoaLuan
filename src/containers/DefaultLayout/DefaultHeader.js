@@ -77,10 +77,10 @@ class DefaultHeader extends Component {
 
         <Nav className="d-md-down-none" pills>
           <NavItem className="px-3">
-            <NavLink href="/" onClick={() => this.onClickNavItem(1)} active={this.state.navItemSelected === 1}>Manage</NavLink>
+            <NavLink href="/" onClick={() => this.onClickNavItem(1)} active={this.state.navItemSelected === 1}>Management</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="#/analyze" onClick={() => this.onClickNavItem(2)} active={this.state.navItemSelected === 2}>Analyze</NavLink>
+            <NavLink href="#/analyze" onClick={() => this.onClickNavItem(2)} active={this.state.navItemSelected === 2}>Analysis</NavLink>
           </NavItem>
           <NavItem className="px-3">
             <NavLink href="#/report" onClick={() => this.onClickNavItem(3)} active={this.state.navItemSelected === 3}>Reporting</NavLink>
@@ -89,7 +89,7 @@ class DefaultHeader extends Component {
             <NavLink href="#/comparision" onClick={() => this.onClickNavItem(4)} active={this.state.navItemSelected === 4}>Comparision</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="#/corporate-health" onClick={() => this.onClickNavItem(5)} active={this.state.navItemSelected === 5}>Corporate Health</NavLink>
+            <NavLink href="#/corporate-health" onClick={() => this.onClickNavItem(5)} active={this.state.navItemSelected === 5}>Financial Health</NavLink>
           </NavItem>
         </Nav>
 
