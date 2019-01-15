@@ -11,6 +11,28 @@ import {
 class ModalError extends Component {
   constructor(props) {
     super(props);
+
+    this.renderAlert = this.renderAlert.bind(this);
+  }
+
+  renderAlert() {
+    const { message } = this.props;
+    if (message === 'Format of table is incorrect!') {
+      return (
+        <Alert className="text-center" color="danger">
+          {message}
+          <div>
+            Please refer <a href="https://drive.google.com/file/d/1ifK0tnBt7P8TWstVboWyCoHGOFDx_W4F/view?usp=sharing" target="_blank">here</a> to get correct format of table
+          </div>
+        </Alert>
+      )
+    } else {
+      return (
+        <Alert className="text-center" color="danger">
+          {message}
+        </Alert>
+      )
+    }
   }
 
   render() {
@@ -25,9 +47,13 @@ class ModalError extends Component {
         <Modal isOpen={showModal} toggle={hideErrorModal}>
           <ModalHeader toggle={hideErrorModal}>Error!</ModalHeader>
           <ModalBody>
-          <Alert className="text-center" color="danger">
+          {/* <Alert className="text-center" color="danger">
             {message}
-          </Alert>
+            {
+
+            }
+          </Alert> */}
+          {this.renderAlert()}
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={hideErrorModal}>Cancel</Button>

@@ -23,6 +23,7 @@ import RecordList from '../Table/RecordList';
 import CorporateHealthAside from './CorporateHealthAside';
 import EChart from '../Charts/EChart';
 import ModalError from '../Base/Modal/ModalError';
+import ModalExportFinancialHealth from '../Base/Modal/ModalExportFinancialHealth';
 
 class CorporateHealth extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class CorporateHealth extends Component {
       selectedDataBaseSecond: '',
       chartSetting: {},
       renderAlert: false,
+      showModalExportData: false,
     };
 
     this.clickBtnChangeQueryStringFirst = this.clickBtnChangeQueryStringFirst.bind(this);
@@ -49,6 +51,9 @@ class CorporateHealth extends Component {
     this.renderTable2 = this.renderTable2.bind(this);
     this.renderTable3 = this.renderTable3.bind(this);
     this.renderTable4 = this.renderTable4.bind(this);
+    this.showModalExportData = this.showModalExportData.bind(this);
+    this.closeModalExportData = this.closeModalExportData.bind(this);
+    this.renderButtonExport = this.renderButtonExport.bind(this);
   }
 
   componentWillMount() {
@@ -70,6 +75,18 @@ class CorporateHealth extends Component {
           renderAlert: false,
         })
       }
+  }
+
+  showModalExportData() {
+    this.setState({
+      showModalExportData: true
+    });
+  }
+
+  closeModalExportData() {
+    this.setState({
+      showModalExportData: false
+    });
   }
 
   clickBtnChangeQueryStringFirst() {
@@ -126,6 +143,50 @@ class CorporateHealth extends Component {
     })
   }
 
+  renderButtonExport() {
+    const { table1Data, table2Data, table3Data, table4Data } = this.props;
+    if (table1Data.static1 &&
+      table1Data.static2 &&
+      table1Data.static3 &&
+      table2Data.static1 &&
+      table2Data.static2 &&
+      table2Data.static3 &&
+      table2Data.static4 &&
+      table3Data.static1 &&
+      table3Data.static2 &&
+      table3Data.static3 &&
+      table3Data.static4 &&
+      table3Data.static5 &&
+      table3Data.static6 &&
+      table4Data.static1 &&
+      table4Data.static2 &&
+      table4Data.static3 &&
+      table4Data.static4
+      ) {
+        return (
+          <div style={{marginLeft: 'auto', marginBottom: '10px'}}>
+              <Button
+                color="primary"
+                onClick={this.showModalExportData}
+              >
+                Export
+              </Button>
+            </div>
+        )
+      } else {
+        return (
+          <div style={{marginLeft: 'auto'}}>
+              <Button
+                color="primary"
+                disabled={true}
+              >
+                Export
+              </Button>
+            </div>
+        )
+      }
+  }
+
   renderTable1() {
     const { table1Data } = this.props;
 
@@ -138,8 +199,8 @@ class CorporateHealth extends Component {
             <thead>
             <tr>
               <th>Targets</th>
-              <th>The end of the year</th>
               <th>The begin of the year</th>
+              <th>The end of the year</th>
               <th>Difference</th>
               <th>Ratio</th>
             </tr>
@@ -215,8 +276,8 @@ class CorporateHealth extends Component {
             <thead>
             <tr>
               <th>Targets</th>
-              <th>The end of the year</th>
               <th>The begin of the year</th>
+              <th>The end of the year</th>
               <th>Difference</th>
               <th>Ratio</th>
             </tr>
@@ -307,8 +368,8 @@ class CorporateHealth extends Component {
             <thead>
             <tr>
               <th>Targets</th>
-              <th>The end of the year</th>
               <th>The begin of the year</th>
+              <th>The end of the year</th>
               <th>Difference</th>
               <th>Ratio</th>
             </tr>
@@ -344,17 +405,17 @@ class CorporateHealth extends Component {
             </tr>
             <tr>
               <td>Performance using the entire property</td>
-              <td>{table3Data.static4.startYear}</td>
-              <td>{table3Data.static4.endYear}</td>
-              <td>{table3Data.static4.difference}</td>
-              <td>{table3Data.static4.ratio}</td>
+              <td>{table3Data.static5.startYear}</td>
+              <td>{table3Data.static5.endYear}</td>
+              <td>{table3Data.static5.difference}</td>
+              <td>{table3Data.static5.ratio}</td>
             </tr>
             <tr>
               <td>Performance of equity</td>
-              <td>{table3Data.static4.startYear}</td>
-              <td>{table3Data.static4.endYear}</td>
-              <td>{table3Data.static4.difference}</td>
-              <td>{table3Data.static4.ratio}</td>
+              <td>{table3Data.static6.startYear}</td>
+              <td>{table3Data.static6.endYear}</td>
+              <td>{table3Data.static6.difference}</td>
+              <td>{table3Data.static6.ratio}</td>
             </tr>
           </tbody>
           </Table>
@@ -425,8 +486,8 @@ class CorporateHealth extends Component {
             <thead>
             <tr>
               <th>Targets</th>
-              <th>The end of the year</th>
               <th>The begin of the year</th>
+              <th>The end of the year</th>
               <th>Difference</th>
               <th>Ratio</th>
             </tr>
@@ -522,13 +583,18 @@ class CorporateHealth extends Component {
       loadingSecondDataSet,
       firstDataSet,
       secondDataSet,
-      table1Data,
-      loadingTable1Data,
       table1ErrorMessage,
+      loadingTable1Data,
       loadingTable2Data,
       loadingTable3Data,
-      loadingTable4Data
+      loadingTable4Data,
+      table1Data,
+      table2Data,
+      table3Data,
+      table4Data
     } = this.props;
+
+    console.log('----------akjsdhfklj', table1Data.static1)
 
     return (
       <div className="animated fadeIn">
@@ -867,12 +933,25 @@ class CorporateHealth extends Component {
             </Card>
           </div> */}
           <AppAside fixed hidden>
-              <CorporateHealthAside
-                listTable={databaseList}
-                onSubmit={this.applySetting}
-              />
-            </AppAside>
+            <CorporateHealthAside
+              listTable={databaseList}
+              onSubmit={this.applySetting}
+            />
+          </AppAside>
         </div>
+
+        <div>
+          {this.renderButtonExport()}
+        </div>
+
+        <ModalExportFinancialHealth
+          showModal={this.state.showModalExportData}
+          closeFunct={this.closeModalExportData}
+          dataSet1={table1Data}
+          dataSet2={table2Data}
+          dataSet3={table3Data}
+          dataSet4={table4Data}
+        />
 
         <ModalError
           message={'Format of table is incorrect!'}

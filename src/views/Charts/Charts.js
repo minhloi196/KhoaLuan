@@ -289,10 +289,10 @@ class Charts extends Component {
           />
 
           <ModalError
-          message={'Can not get data with current query string!'}
-          showModal={this.state.renderAlert}
-          hideErrorModal={this.hideErrorModal}
-        />
+            message={'Can not get data with current query string!'}
+            showModal={this.state.renderAlert}
+            hideErrorModal={this.hideErrorModal}
+          />
         </div>
       </div>
     );
