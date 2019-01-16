@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import {
   Button,
+  Input
 } from 'reactstrap';
 import {
   AppAside,
 } from '@coreui/react';
 import Loader from 'react-loader-spinner';
+import Select from 'react-select';
 
 import { requestGetAllTable } from '../../actions/getAllTable';
 import { requestImportFile } from '../../actions/importDB';
@@ -25,6 +27,12 @@ import ModalMessageError from '../Base/Modal/ModalMessageError';
 import ModalExportData from '../Base/Modal/ModalExportData';
 import ModalError from '../Base/Modal/ModalError';
 
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+];
+
 class Analyze extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +42,13 @@ class Analyze extends Component {
       queryString: '',
       chartSetting: {},
       selectedDB: '',
-      showModalExportData: false
+      showModalExportData: false,
+      selectedOptionTable: null,
+      selectedOptionColumn: null,
+      listDB: null,
+      listOptionTable: [],
+      listOptionColumn: [],
+      limit: null
     };
 
     this.onChangeTable = this.onChangeTable.bind(this);
@@ -45,6 +59,10 @@ class Analyze extends Component {
     this.showModalExportData = this.showModalExportData.bind(this);
     this.closeModalExportData = this.closeModalExportData.bind(this);
     this.hideErrorModal = this.hideErrorModal.bind(this);
+    this.handleChangeTable = this.handleChangeTable.bind(this);
+    this.handleChangeColumn = this.handleChangeColumn.bind(this);
+    this.changeLimit = this.changeLimit.bind(this);
+    this.onApplyFilter = this.onApplyFilter.bind(this);
   }
 
   componentWillMount() {
@@ -66,6 +84,73 @@ class Analyze extends Component {
           renderAlert: false,
         })
       }
+
+    if (nextProps.loadingDataBaseList !== this.props.loadingDataBaseList &&
+      nextProps.loadingDataBaseList === 'success') {
+        this.setState({
+          listDB: nextProps.databaseList
+        })
+      }
+  }
+
+  onApplyFilter() {
+    const { requestGetRecordByQueryString } = this.props;
+    // build query string 
+    // select ... from ... limit ...
+    let queryString = `select {column} from {table}`;
+    let column = '*';
+    if (this.state.selectedOptionColumn && this.state.selectedOptionColumn.length > 0) {
+      column = '';
+      for (let i = 0; i < this.state.selectedOptionColumn.length - 1; i++) {
+        column = column + this.state.selectedOptionColumn[i].value + ', ';
+      }
+
+      column = column + this.state.selectedOptionColumn[this.state.selectedOptionColumn.length -1].value;
+    }
+
+    let table = this.state.selectedOptionTable ? this.state.selectedOptionTable.value : '';
+
+    queryString = queryString.replace('{column}', column);
+    queryString = queryString.replace('{table}', table);
+
+    if (this.state.limit && this.state.limit != '') {
+      queryString = queryString + ' limit ' + this.state.limit;
+    }
+
+    console.log('query string', queryString);
+    this.setState({
+      queryString
+    })
+    requestGetRecordByQueryString(queryString, this.state.selectedDB);
+  }
+
+  handleChangeTable = (selectedOptionTable) => {
+    const { databaseList } = this.props;
+
+    let columnList = [];
+
+    // get list column
+    for (let i = 0; i < databaseList.length; i++) {
+      if (databaseList[i].databaseName === this.state.selectedDB) {
+        for (let j = 0; j < databaseList[i].tables.length; j++) {
+          if (databaseList[i].tables[j].tableName === selectedOptionTable.value) {
+            for ( let index = 0; index < databaseList[i].tables[j].columns.length; index++) {
+              columnList.push({value: databaseList[i].tables[j].columns[index], label: databaseList[i].tables[j].columns[index]})
+            }
+          }
+        }
+      }
+    }
+
+    this.setState({ selectedOptionTable, listOptionColumn: columnList });
+  }
+
+  handleChangeColumn = (selectedOptionColumn) => {
+    this.setState({ selectedOptionColumn })
+  }
+
+  changeLimit(event) {
+    this.setState({ limit: event.target.value})
   }
 
   hideErrorModal() {
@@ -92,9 +177,26 @@ class Analyze extends Component {
 
   selectDataBase = (databaseName) => {
 
+    const { databaseList } = this.props;
+    let tableList = null;
+
     if (databaseName !== this.state.selectedDB) {
+      // get list table
+      for (let i = 0; i < databaseList.length; i++) {
+        if (databaseList[i].databaseName === databaseName) {
+          tableList = databaseList[i].tables.map((item) => {
+            return {
+              value: item.tableName,
+              label: item.tableName
+            }
+          })
+        }
+      }
+
+      // console.log('get table list :', tableList)
         this.setState({
           selectedDB: databaseName,
+          listOptionTable: tableList
         });
       }
   }
@@ -145,6 +247,8 @@ class Analyze extends Component {
       loadingDataBaseList
     } = this.props;
 
+    const { selectedOptionTable, selectedOptionColumn } = this.state;
+
     return (
       <div className="animated fadeIn">
         {
@@ -189,10 +293,49 @@ class Analyze extends Component {
           </div>
 
           <div className="dashboard-content-right">
+
+            
             <div className="label-list-table">
               Selected DataBase: {this.state.selectedDB}
             </div>
 
+            <h6>Simple Filter</h6>
+            <div className="simple-filter">
+              <div className="filter-item multi-select">
+                <span>Table</span>
+                <Select
+                  value={selectedOptionTable}
+                  onChange={this.handleChangeTable}
+                  options={this.state.listOptionTable}
+                />
+              </div>
+              <div className="filter-item multi-select">
+                <span>Column</span>
+                <Select
+                  value={selectedOptionColumn}
+                  onChange={this.handleChangeColumn}
+                  options={this.state.listOptionColumn}
+                  isMulti={true}
+                />
+              </div>
+              <div className="filter-item multi-select">
+                <span>Limit</span>
+                <Input
+                  type="number"
+                  onChange={this.changeLimit}
+                />
+              </div>
+              <div className="filter-item multi-select btn-apply-filter">
+                <Button
+                  color="primary"
+                  onClick={this.onApplyFilter}
+                >
+                  Apply
+                </Button>
+              </div>
+            </div>
+
+            <h6>Query String</h6>
             <SqlEditors
               value={this.state.queryString}
               updateQueryString={this.updateQueryString}

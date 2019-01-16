@@ -272,3 +272,32 @@
   max-width: 100%;
   height: auto;
 }
+
+.color-danger {
+  background-color: #f86c6b;
+  color: yellow;
+}
+
+.simple-filter {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.multi-select {
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.filter-item {
+  margin-right: 10px;
+}
+
+.btn-apply-filter {
+  position: relative;
+}
+
+.btn-apply-filter .btn {
+  position: absolute;
+  top: 20px;
+}

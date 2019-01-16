@@ -54,6 +54,7 @@ class CorporateHealth extends Component {
     this.showModalExportData = this.showModalExportData.bind(this);
     this.closeModalExportData = this.closeModalExportData.bind(this);
     this.renderButtonExport = this.renderButtonExport.bind(this);
+    this.renderClassName = this.renderClassName.bind(this);
   }
 
   componentWillMount() {
@@ -75,6 +76,14 @@ class CorporateHealth extends Component {
           renderAlert: false,
         })
       }
+  }
+
+  renderClassName(value) {
+    if (value > 0) {
+      return '';
+    } else {
+      return 'color-danger';
+    }
   }
 
   showModalExportData() {
@@ -209,24 +218,24 @@ class CorporateHealth extends Component {
           <tbody>
             <tr>
               <td>Profitability factor</td>
-              <td>{table1Data.static1.startYear}</td>
-              <td>{table1Data.static1.endYear}</td>
-              <td>{table1Data.static1.difference}</td>
-              <td>{table1Data.static1.ratio}</td>
+              <td className={this.renderClassName(table1Data.static1.startYear)}>{table1Data.static1.startYear}</td>
+              <td className={this.renderClassName(table1Data.static1.endYear)}>{table1Data.static1.endYear}</td>
+              <td className={this.renderClassName(table1Data.static1.difference)}>{table1Data.static1.difference}</td>
+              <td className={this.renderClassName(table1Data.static1.ratio)}>{table1Data.static1.ratio}</td>
             </tr>
             <tr>
               <td>Economic profitability coefficient</td>
-              <td>{table1Data.static2.startYear}</td>
-              <td>{table1Data.static2.endYear}</td>
-              <td>{table1Data.static2.difference}</td>
-              <td>{table1Data.static2.ratio}</td>
+              <td className={this.renderClassName(table1Data.static2.startYear)}>{table1Data.static2.startYear}</td>
+              <td className={this.renderClassName(table1Data.static2.endYear)}>{table1Data.static2.endYear}</td>
+              <td className={this.renderClassName(table1Data.static2.difference)}>{table1Data.static2.difference}</td>
+              <td className={this.renderClassName(table1Data.static2.ratio)}>{table1Data.static2.ratio}</td>
             </tr>
             <tr>
               <td>Financial profitability coefficient</td>
-              <td>{table1Data.static3.startYear}</td>
-              <td>{table1Data.static3.endYear}</td>
-              <td>{table1Data.static3.difference}</td>
-              <td>{table1Data.static3.ratio}</td>
+              <td className={this.renderClassName(table1Data.static3.startYear)}>{table1Data.static3.startYear}</td>
+              <td className={this.renderClassName(table1Data.static3.endYear)}>{table1Data.static3.endYear}</td>
+              <td className={this.renderClassName(table1Data.static3.difference)}>{table1Data.static3.difference}</td>
+              <td className={this.renderClassName(table1Data.static3.ratio)}>{table1Data.static3.ratio}</td>
             </tr>
           </tbody>
           </Table>
@@ -236,25 +245,25 @@ class CorporateHealth extends Component {
     return (
       // <tbody>
       //   <tr>
-      //     <td>Profitability factor</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Profitability factor</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Economic profitability coefficient</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Economic profitability coefficient</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Financial profitability coefficient</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Financial profitability coefficient</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       // </tbody>
       <Alert className="text-center" color="warning">
@@ -285,31 +294,31 @@ class CorporateHealth extends Component {
           <tbody>
             <tr>
               <td>Overall solvency coefficient</td>
-              <td>{table2Data.static1.startYear}</td>
-              <td>{table2Data.static1.endYear}</td>
-              <td>{table2Data.static1.difference}</td>
-              <td>{table2Data.static1.ratio}</td>
+              <td className={this.renderClassName(table2Data.static1.startYear)}>{table2Data.static1.startYear}</td>
+              <td className={this.renderClassName(table2Data.static1.endYear)}>{table2Data.static1.endYear}</td>
+              <td className={this.renderClassName(table2Data.static1.difference)}>{table2Data.static1.difference}</td>
+              <td className={this.renderClassName(table2Data.static1.ratio)}>{table2Data.static1.ratio}</td>
             </tr>
             <tr>
               <td>Short-term solvency coefficient</td>
-              <td>{table2Data.static2.startYear}</td>
-              <td>{table2Data.static2.endYear}</td>
-              <td>{table2Data.static2.difference}</td>
-              <td>{table2Data.static2.ratio}</td>
+              <td className={this.renderClassName(table2Data.static2.startYear)}>{table2Data.static2.startYear}</td>
+              <td className={this.renderClassName(table2Data.static2.endYear)}>{table2Data.static2.endYear}</td>
+              <td className={this.renderClassName(table2Data.static2.difference)}>{table2Data.static2.difference}</td>
+              <td className={this.renderClassName(table2Data.static2.ratio)}>{table2Data.static2.ratio}</td>
             </tr>
             <tr>
               <td>Quick solvency coefficient</td>
-              <td>{table2Data.static3.startYear}</td>
-              <td>{table2Data.static3.endYear}</td>
-              <td>{table2Data.static3.difference}</td>
-              <td>{table2Data.static3.ratio}</td>
+              <td className={this.renderClassName(table2Data.static3.startYear)}>{table2Data.static3.startYear}</td>
+              <td className={this.renderClassName(table2Data.static3.endYear)}>{table2Data.static3.endYear}</td>
+              <td className={this.renderClassName(table2Data.static3.difference)}>{table2Data.static3.difference}</td>
+              <td className={this.renderClassName(table2Data.static3.ratio)}>{table2Data.static3.ratio}</td>
             </tr>
             <tr>
               <td>Instant solvency coefficient</td>
-              <td>{table2Data.static4.startYear}</td>
-              <td>{table2Data.static4.endYear}</td>
-              <td>{table2Data.static4.difference}</td>
-              <td>{table2Data.static4.ratio}</td>
+              <td className={this.renderClassName(table2Data.static4.startYear)}>{table2Data.static4.startYear}</td>
+              <td className={this.renderClassName(table2Data.static4.endYear)}>{table2Data.static4.endYear}</td>
+              <td className={this.renderClassName(table2Data.static4.difference)}>{table2Data.static4.difference}</td>
+              <td className={this.renderClassName(table2Data.static4.ratio)}>{table2Data.static4.ratio}</td>
             </tr>
           </tbody>
           </Table>
@@ -319,32 +328,32 @@ class CorporateHealth extends Component {
     return (
       // <tbody>
       //   <tr>
-      //     <td>Overall solvency coefficient</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Overall solvency coefficient</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Short-term solvency coefficient</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Short-term solvency coefficient</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Quick solvency coefficient</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Quick solvency coefficient</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Instant solvency coefficient</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Instant solvency coefficient</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       // </tbody>
       <Alert className="text-center" color="warning">
@@ -377,45 +386,45 @@ class CorporateHealth extends Component {
           <tbody>
             <tr>
               <td>Receivables turnover</td>
-              <td>{table3Data.static1.startYear}</td>
-              <td>{table3Data.static1.endYear}</td>
-              <td>{table3Data.static1.difference}</td>
-              <td>{table3Data.static1.ratio}</td>
+              <td className={this.renderClassName(table3Data.static1.startYear)}>{table3Data.static1.startYear}</td>
+              <td className={this.renderClassName(table3Data.static1.endYear)}>{table3Data.static1.endYear}</td>
+              <td className={this.renderClassName(table3Data.static1.difference)}>{table3Data.static1.difference}</td>
+              <td className={this.renderClassName(table3Data.static1.ratio)}>{table3Data.static1.ratio}</td>
             </tr>
             <tr>
               <td>Average collection period</td>
-              <td>{table3Data.static2.startYear}</td>
-              <td>{table3Data.static2.endYear}</td>
-              <td>{table3Data.static2.difference}</td>
-              <td>{table3Data.static2.ratio}</td>
+              <td className={this.renderClassName(table3Data.static2.startYear)}>{table3Data.static2.startYear}</td>
+              <td className={this.renderClassName(table3Data.static2.endYear)}>{table3Data.static2.endYear}</td>
+              <td className={this.renderClassName(table3Data.static2.difference)}>{table3Data.static2.difference}</td>
+              <td className={this.renderClassName(table3Data.static2.ratio)}>{table3Data.static2.ratio}</td>
             </tr>
             <tr>
               <td>Number of inventory turns</td>
-              <td>{table3Data.static3.startYear}</td>
-              <td>{table3Data.static3.endYear}</td>
-              <td>{table3Data.static3.difference}</td>
-              <td>{table3Data.static3.ratio}</td>
+              <td className={this.renderClassName(table3Data.static3.startYear)}>{table3Data.static3.startYear}</td>
+              <td className={this.renderClassName(table3Data.static3.endYear)}>{table3Data.static3.endYear}</td>
+              <td className={this.renderClassName(table3Data.static3.difference)}>{table3Data.static3.difference}</td>
+              <td className={this.renderClassName(table3Data.static3.ratio)}>{table3Data.static3.ratio}</td>
             </tr>
             <tr>
               <td>Performance of fixed assets</td>
-              <td>{table3Data.static4.startYear}</td>
-              <td>{table3Data.static4.endYear}</td>
-              <td>{table3Data.static4.difference}</td>
-              <td>{table3Data.static4.ratio}</td>
+              <td className={this.renderClassName(table3Data.static4.startYear)}>{table3Data.static4.startYear}</td>
+              <td className={this.renderClassName(table3Data.static4.endYear)}>{table3Data.static4.endYear}</td>
+              <td className={this.renderClassName(table3Data.static4.difference)}>{table3Data.static4.difference}</td>
+              <td className={this.renderClassName(table3Data.static4.ratio)}>{table3Data.static4.ratio}</td>
             </tr>
             <tr>
               <td>Performance using the entire property</td>
-              <td>{table3Data.static5.startYear}</td>
-              <td>{table3Data.static5.endYear}</td>
-              <td>{table3Data.static5.difference}</td>
-              <td>{table3Data.static5.ratio}</td>
+              <td className={this.renderClassName(table3Data.static5.startYear)}>{table3Data.static5.startYear}</td>
+              <td className={this.renderClassName(table3Data.static5.endYear)}>{table3Data.static5.endYear}</td>
+              <td className={this.renderClassName(table3Data.static5.difference)}>{table3Data.static5.difference}</td>
+              <td className={this.renderClassName(table3Data.static5.ratio)}>{table3Data.static5.ratio}</td>
             </tr>
             <tr>
               <td>Performance of equity</td>
-              <td>{table3Data.static6.startYear}</td>
-              <td>{table3Data.static6.endYear}</td>
-              <td>{table3Data.static6.difference}</td>
-              <td>{table3Data.static6.ratio}</td>
+              <td className={this.renderClassName(table3Data.static6.startYear)}>{table3Data.static6.startYear}</td>
+              <td className={this.renderClassName(table3Data.static6.endYear)}>{table3Data.static6.endYear}</td>
+              <td className={this.renderClassName(table3Data.static6.difference)}>{table3Data.static6.difference}</td>
+              <td className={this.renderClassName(table3Data.static6.ratio)}>{table3Data.static6.ratio}</td>
             </tr>
           </tbody>
           </Table>
@@ -425,46 +434,46 @@ class CorporateHealth extends Component {
     return (
       // <tbody>
       //   <tr>
-      //     <td>Receivables turnover</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Receivables turnover</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Average collection period</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Average collection period</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Number of inventory turns</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Number of inventory turns</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Performance of fixed assets</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Performance of fixed assets</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Performance using the entire property</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Performance using the entire property</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Performance of equity</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Performance of equity</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       // </tbody>
       <Alert className="text-center" color="warning">
@@ -495,31 +504,31 @@ class CorporateHealth extends Component {
           <tbody>
             <tr>
               <td>Ratio of debt on assets</td>
-              <td>{table4Data.static1.startYear}</td>
-              <td>{table4Data.static1.endYear}</td>
-              <td>{table4Data.static1.difference}</td>
-              <td>{table4Data.static1.ratio}</td>
+              <td className={this.renderClassName(table4Data.static1.startYear)}>{table4Data.static1.startYear}</td>
+              <td className={this.renderClassName(table4Data.static1.endYear)}>{table4Data.static1.endYear}</td>
+              <td className={this.renderClassName(table4Data.static1.difference)}>{table4Data.static1.difference}</td>
+              <td className={this.renderClassName(table4Data.static1.ratio)}>{table4Data.static1.ratio}</td>
             </tr>
             <tr>
               <td>Debt to equity ratio</td>
-              <td>{table4Data.static2.startYear}</td>
-              <td>{table4Data.static2.endYear}</td>
-              <td>{table4Data.static2.difference}</td>
-              <td>{table4Data.static2.ratio}</td>
+              <td className={this.renderClassName(table4Data.static2.startYear)}>{table4Data.static2.startYear}</td>
+              <td className={this.renderClassName(table4Data.static2.endYear)}>{table4Data.static2.endYear}</td>
+              <td className={this.renderClassName(table4Data.static2.difference)}>{table4Data.static2.difference}</td>
+              <td className={this.renderClassName(table4Data.static2.ratio)}>{table4Data.static2.ratio}</td>
             </tr>
             <tr>
               <td>Ratio of total assets on equity</td>
-              <td>{table4Data.static3.startYear}</td>
-              <td>{table4Data.static3.endYear}</td>
-              <td>{table4Data.static3.difference}</td>
-              <td>{table4Data.static3.ratio}</td>
+              <td className={this.renderClassName(table4Data.static3.startYear)}>{table4Data.static3.startYear}</td>
+              <td className={this.renderClassName(table4Data.static3.endYear)}>{table4Data.static3.endYear}</td>
+              <td className={this.renderClassName(table4Data.static3.difference)}>{table4Data.static3.difference}</td>
+              <td className={this.renderClassName(table4Data.static3.ratio)}>{table4Data.static3.ratio}</td>
             </tr>
             <tr>
               <td>Short-term debt ratio on total debt</td>
-              <td>{table4Data.static4.startYear}</td>
-              <td>{table4Data.static4.endYear}</td>
-              <td>{table4Data.static4.difference}</td>
-              <td>{table4Data.static4.ratio}</td>
+              <td className={this.renderClassName(table4Data.static4.startYear)}>{table4Data.static4.startYear}</td>
+              <td className={this.renderClassName(table4Data.static4.endYear)}>{table4Data.static4.endYear}</td>
+              <td className={this.renderClassName(table4Data.static4.difference)}>{table4Data.static4.difference}</td>
+              <td className={this.renderClassName(table4Data.static4.ratio)}>{table4Data.static4.ratio}</td>
             </tr>
           </tbody>
           </Table>
@@ -529,32 +538,32 @@ class CorporateHealth extends Component {
     return (
       // <tbody>
       //   <tr>
-      //     <td>Ratio of debt on assets</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Ratio of debt on assets</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Debt to equity ratio</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Debt to equity ratio</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Ratio of total assets on equity</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Ratio of total assets on equity</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       //   <tr>
-      //     <td>Short-term debt ratio on total debt</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
-      //     <td>null</td>
+      //     <td className={this.renderClassName()}>Short-term debt ratio on total debt</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
+      //     <td className={this.renderClassName()}>null</td>
       //   </tr>
       // </tbody>
       <Alert className="text-center" color="warning">
@@ -723,32 +732,32 @@ class CorporateHealth extends Component {
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Circulating capital</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Circulating capital</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Regular funding coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Regular funding coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Self-financing coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Self-financing coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Self-financing coefficient of fixed assets</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Self-financing coefficient of fixed assets</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   </tbody>
                 </Table>
@@ -774,32 +783,32 @@ class CorporateHealth extends Component {
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Overall solvency coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Overall solvency coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Short-term solvency coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Short-term solvency coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Quick solvency coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Quick solvency coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Instant solvency coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Instant solvency coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   </tbody>
                 </Table>
@@ -823,60 +832,60 @@ class CorporateHealth extends Component {
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Number of rotation cycles of the entire capital</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Number of rotation cycles of the entire capital</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Business capital rotation</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Business capital rotation</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Number of circulating working capital cycles</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Number of circulating working capital cycles</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Circulating working capital</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Circulating working capital</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Number of reserve cycles</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Number of reserve cycles</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Circulation period of reserves</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Circulation period of reserves</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Number of rounds of receivable capital</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Number of rounds of receivable capital</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>The period of receivable capital turnover</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>The period of receivable capital turnover</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                 </tbody>
                 </Table>
@@ -900,32 +909,32 @@ class CorporateHealth extends Component {
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Profitability factor</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Profitability factor</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Basic profitability coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Basic profitability coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Economic profitability coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Economic profitability coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   <tr>
-                    <td>Financial profitability coefficient</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
-                    <td>null</td>
+                    <td className={this.renderClassName()}>Financial profitability coefficient</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
+                    <td className={this.renderClassName()}>null</td>
                   </tr>
                   </tbody>
                 </Table>
