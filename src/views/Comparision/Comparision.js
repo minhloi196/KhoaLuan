@@ -20,6 +20,7 @@ import ComparisionAside from './ComparisionAside';
 import EChart from '../Charts/EChart';
 import ModalExportData from '../Base/Modal/ModalExportData';
 import ModalError from '../Base/Modal/ModalError';
+import EChartCompare from '../Charts/EChartCompare';
 
 class Comparision extends Component {
   constructor(props) {
@@ -386,6 +387,28 @@ class Comparision extends Component {
           />
 
         </div>
+
+        <div>
+            <Card className="chart-page-item">
+              <CardHeader>
+                Compare Data
+              </CardHeader>
+              <CardBody>
+                <div className="chart-wrapper">
+                  <EChartCompare
+                    fromReport={true}
+                    data={firstDataSet}
+                    dataSecond={secondDataSet}
+                    listKey={listKey}
+                    loadingDataSecond={loadingSecondDataSet}
+                    loadingData={loadingFirstDataSet}
+                    loadingDataSecond={loadingSecondDataSet}
+                    setting={this.state.chartSetting}
+                  />
+                </div>
+              </CardBody>
+            </Card>
+          </div>
       </div>
     );
   }

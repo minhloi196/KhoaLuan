@@ -204,6 +204,7 @@ class CorporateHealth extends Component {
       table1Data.static3
       ) {
         return (
+          <div>
           <Table responsive bordered>
             <thead>
             <tr>
@@ -216,22 +217,22 @@ class CorporateHealth extends Component {
             </thead>
                 
           <tbody>
-            <tr>
-              <td>Profitability factor</td>
+            <tr className={this.renderClassName(table1Data.static1.difference)}>
+              <td>Profitability factor (ROS)</td>
               <td className={this.renderClassName(table1Data.static1.startYear)}>{table1Data.static1.startYear}</td>
               <td className={this.renderClassName(table1Data.static1.endYear)}>{table1Data.static1.endYear}</td>
               <td className={this.renderClassName(table1Data.static1.difference)}>{table1Data.static1.difference}</td>
               <td className={this.renderClassName(table1Data.static1.ratio)}>{table1Data.static1.ratio}</td>
             </tr>
-            <tr>
-              <td>Economic profitability coefficient</td>
+            <tr className={this.renderClassName(table1Data.static2.difference)}>
+              <td>Economic profitability coefficient (ROA)</td>
               <td className={this.renderClassName(table1Data.static2.startYear)}>{table1Data.static2.startYear}</td>
               <td className={this.renderClassName(table1Data.static2.endYear)}>{table1Data.static2.endYear}</td>
               <td className={this.renderClassName(table1Data.static2.difference)}>{table1Data.static2.difference}</td>
               <td className={this.renderClassName(table1Data.static2.ratio)}>{table1Data.static2.ratio}</td>
             </tr>
-            <tr>
-              <td>Financial profitability coefficient</td>
+            <tr className={this.renderClassName(table1Data.static3.difference)}>
+              <td>Financial profitability coefficient (ROE)</td>
               <td className={this.renderClassName(table1Data.static3.startYear)}>{table1Data.static3.startYear}</td>
               <td className={this.renderClassName(table1Data.static3.endYear)}>{table1Data.static3.endYear}</td>
               <td className={this.renderClassName(table1Data.static3.difference)}>{table1Data.static3.difference}</td>
@@ -239,6 +240,10 @@ class CorporateHealth extends Component {
             </tr>
           </tbody>
           </Table>
+          <Alert className="text-center" color="warning">
+            {table1Data.message}
+          </Alert>
+          </div>
         )
       }
 
@@ -281,6 +286,7 @@ class CorporateHealth extends Component {
       table2Data.static4
       ) {
         return (
+          <div>
           <Table responsive bordered>
             <thead>
             <tr>
@@ -292,29 +298,29 @@ class CorporateHealth extends Component {
             </tr>
             </thead>
           <tbody>
-            <tr>
-              <td>Overall solvency coefficient</td>
+            <tr className={this.renderClassName(table2Data.static1.difference)}>
+              <td>Overall ratio</td>
               <td className={this.renderClassName(table2Data.static1.startYear)}>{table2Data.static1.startYear}</td>
               <td className={this.renderClassName(table2Data.static1.endYear)}>{table2Data.static1.endYear}</td>
               <td className={this.renderClassName(table2Data.static1.difference)}>{table2Data.static1.difference}</td>
               <td className={this.renderClassName(table2Data.static1.ratio)}>{table2Data.static1.ratio}</td>
             </tr>
-            <tr>
-              <td>Short-term solvency coefficient</td>
+            <tr className={this.renderClassName(table2Data.static2.difference)}>
+              <td>Short-term ratio</td>
               <td className={this.renderClassName(table2Data.static2.startYear)}>{table2Data.static2.startYear}</td>
               <td className={this.renderClassName(table2Data.static2.endYear)}>{table2Data.static2.endYear}</td>
               <td className={this.renderClassName(table2Data.static2.difference)}>{table2Data.static2.difference}</td>
               <td className={this.renderClassName(table2Data.static2.ratio)}>{table2Data.static2.ratio}</td>
             </tr>
-            <tr>
-              <td>Quick solvency coefficient</td>
+            <tr className={this.renderClassName(table2Data.static3.difference)}>
+              <td>Quick ratio</td>
               <td className={this.renderClassName(table2Data.static3.startYear)}>{table2Data.static3.startYear}</td>
               <td className={this.renderClassName(table2Data.static3.endYear)}>{table2Data.static3.endYear}</td>
               <td className={this.renderClassName(table2Data.static3.difference)}>{table2Data.static3.difference}</td>
               <td className={this.renderClassName(table2Data.static3.ratio)}>{table2Data.static3.ratio}</td>
             </tr>
-            <tr>
-              <td>Instant solvency coefficient</td>
+            <tr className={this.renderClassName(table2Data.static4.difference)}>
+              <td>Instant ratio</td>
               <td className={this.renderClassName(table2Data.static4.startYear)}>{table2Data.static4.startYear}</td>
               <td className={this.renderClassName(table2Data.static4.endYear)}>{table2Data.static4.endYear}</td>
               <td className={this.renderClassName(table2Data.static4.difference)}>{table2Data.static4.difference}</td>
@@ -322,6 +328,10 @@ class CorporateHealth extends Component {
             </tr>
           </tbody>
           </Table>
+          <Alert className="text-center" color="warning">
+            {table2Data.message}
+          </Alert>
+          </div>
         )
       }
 
@@ -373,6 +383,7 @@ class CorporateHealth extends Component {
       table3Data.static6
       ) {
         return (
+          <div>
           <Table responsive bordered>
             <thead>
             <tr>
@@ -384,43 +395,43 @@ class CorporateHealth extends Component {
             </tr>
             </thead>
           <tbody>
-            <tr>
-              <td>Receivables turnover</td>
+            <tr className={this.renderClassName(table3Data.static1.difference)}>
+              <td>Accounts receivable turnover ratio</td>
               <td className={this.renderClassName(table3Data.static1.startYear)}>{table3Data.static1.startYear}</td>
               <td className={this.renderClassName(table3Data.static1.endYear)}>{table3Data.static1.endYear}</td>
               <td className={this.renderClassName(table3Data.static1.difference)}>{table3Data.static1.difference}</td>
               <td className={this.renderClassName(table3Data.static1.ratio)}>{table3Data.static1.ratio}</td>
             </tr>
-            <tr>
+            <tr className={this.renderClassName(table3Data.static2.difference)}>
               <td>Average collection period</td>
               <td className={this.renderClassName(table3Data.static2.startYear)}>{table3Data.static2.startYear}</td>
               <td className={this.renderClassName(table3Data.static2.endYear)}>{table3Data.static2.endYear}</td>
               <td className={this.renderClassName(table3Data.static2.difference)}>{table3Data.static2.difference}</td>
               <td className={this.renderClassName(table3Data.static2.ratio)}>{table3Data.static2.ratio}</td>
             </tr>
-            <tr>
-              <td>Number of inventory turns</td>
+            <tr className={this.renderClassName(table3Data.static3.difference)}>
+              <td>Inventory turnover ratio</td>
               <td className={this.renderClassName(table3Data.static3.startYear)}>{table3Data.static3.startYear}</td>
               <td className={this.renderClassName(table3Data.static3.endYear)}>{table3Data.static3.endYear}</td>
               <td className={this.renderClassName(table3Data.static3.difference)}>{table3Data.static3.difference}</td>
               <td className={this.renderClassName(table3Data.static3.ratio)}>{table3Data.static3.ratio}</td>
             </tr>
-            <tr>
-              <td>Performance of fixed assets</td>
+            <tr className={this.renderClassName(table3Data.static4.difference)}>
+              <td>Sales-to-fixed assets ratio</td>
               <td className={this.renderClassName(table3Data.static4.startYear)}>{table3Data.static4.startYear}</td>
               <td className={this.renderClassName(table3Data.static4.endYear)}>{table3Data.static4.endYear}</td>
               <td className={this.renderClassName(table3Data.static4.difference)}>{table3Data.static4.difference}</td>
               <td className={this.renderClassName(table3Data.static4.ratio)}>{table3Data.static4.ratio}</td>
             </tr>
-            <tr>
-              <td>Performance using the entire property</td>
+            <tr className={this.renderClassName(table3Data.static5.difference)}>
+              <td>Sales-to-total assets ratio</td>
               <td className={this.renderClassName(table3Data.static5.startYear)}>{table3Data.static5.startYear}</td>
               <td className={this.renderClassName(table3Data.static5.endYear)}>{table3Data.static5.endYear}</td>
               <td className={this.renderClassName(table3Data.static5.difference)}>{table3Data.static5.difference}</td>
               <td className={this.renderClassName(table3Data.static5.ratio)}>{table3Data.static5.ratio}</td>
             </tr>
-            <tr>
-              <td>Performance of equity</td>
+            <tr className={this.renderClassName(table3Data.static6.difference)}>
+              <td>Sales-to-equity ratio</td>
               <td className={this.renderClassName(table3Data.static6.startYear)}>{table3Data.static6.startYear}</td>
               <td className={this.renderClassName(table3Data.static6.endYear)}>{table3Data.static6.endYear}</td>
               <td className={this.renderClassName(table3Data.static6.difference)}>{table3Data.static6.difference}</td>
@@ -428,6 +439,10 @@ class CorporateHealth extends Component {
             </tr>
           </tbody>
           </Table>
+          <Alert className="text-center" color="warning">
+            {table3Data.message}
+          </Alert>
+          </div>
         )
       }
 
@@ -491,6 +506,7 @@ class CorporateHealth extends Component {
       table4Data.static4
       ) {
         return (
+          <div>
           <Table responsive bordered>
             <thead>
             <tr>
@@ -502,28 +518,28 @@ class CorporateHealth extends Component {
             </tr>
             </thead>
           <tbody>
-            <tr>
-              <td>Ratio of debt on assets</td>
+            <tr className={this.renderClassName(table4Data.static1.difference)}>
+              <td>Debt ratio</td>
               <td className={this.renderClassName(table4Data.static1.startYear)}>{table4Data.static1.startYear}</td>
               <td className={this.renderClassName(table4Data.static1.endYear)}>{table4Data.static1.endYear}</td>
               <td className={this.renderClassName(table4Data.static1.difference)}>{table4Data.static1.difference}</td>
               <td className={this.renderClassName(table4Data.static1.ratio)}>{table4Data.static1.ratio}</td>
             </tr>
-            <tr>
-              <td>Debt to equity ratio</td>
+            <tr className={this.renderClassName(table4Data.static2.difference)}>
+              <td>Debt-to-equity ratio</td>
               <td className={this.renderClassName(table4Data.static2.startYear)}>{table4Data.static2.startYear}</td>
               <td className={this.renderClassName(table4Data.static2.endYear)}>{table4Data.static2.endYear}</td>
               <td className={this.renderClassName(table4Data.static2.difference)}>{table4Data.static2.difference}</td>
               <td className={this.renderClassName(table4Data.static2.ratio)}>{table4Data.static2.ratio}</td>
             </tr>
-            <tr>
-              <td>Ratio of total assets on equity</td>
+            <tr className={this.renderClassName(table4Data.static3.difference)}>
+              <td>Equity multiplier ratio</td>
               <td className={this.renderClassName(table4Data.static3.startYear)}>{table4Data.static3.startYear}</td>
               <td className={this.renderClassName(table4Data.static3.endYear)}>{table4Data.static3.endYear}</td>
               <td className={this.renderClassName(table4Data.static3.difference)}>{table4Data.static3.difference}</td>
               <td className={this.renderClassName(table4Data.static3.ratio)}>{table4Data.static3.ratio}</td>
             </tr>
-            <tr>
+            <tr className={this.renderClassName(table4Data.static4.difference)}>
               <td>Short-term debt ratio on total debt</td>
               <td className={this.renderClassName(table4Data.static4.startYear)}>{table4Data.static4.startYear}</td>
               <td className={this.renderClassName(table4Data.static4.endYear)}>{table4Data.static4.endYear}</td>
@@ -532,6 +548,10 @@ class CorporateHealth extends Component {
             </tr>
           </tbody>
           </Table>
+          <Alert className="text-center" color="warning">
+            {table4Data.message}
+          </Alert>
+          </div>
         )
       }
 
@@ -654,7 +674,7 @@ class CorporateHealth extends Component {
 
             <Card>
               <CardHeader>
-              Evaluate the operational ability of the enterprise
+              Activity ratio
               </CardHeader>
               <CardBody>
                 {/* <Table responsive bordered>

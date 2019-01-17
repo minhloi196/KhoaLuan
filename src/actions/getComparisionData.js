@@ -21,7 +21,7 @@ export const requestFirstDataSet = (queryString, databaseName) => {
   url += `querystring=${queryString}&databasename=${databaseName}`;
   let auth = setAuth();
 
-  console.log('get rr', url)
+  // console.log('get rr', url)
 
   return (dispatch) => {
     dispatch({
@@ -61,7 +61,7 @@ export const requestSecondDataSet = (queryString, databaseName) => {
   url += `querystring=${queryString}&databasename=${databaseName}`;
   let auth = setAuth();
 
-  console.log('get rr', url)
+  // console.log('get rr', url)
 
   return (dispatch) => {
     dispatch({

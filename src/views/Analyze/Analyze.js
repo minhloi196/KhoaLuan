@@ -117,10 +117,10 @@ class Analyze extends Component {
       queryString = queryString + ' limit ' + this.state.limit;
     }
 
-    console.log('query string', queryString);
-    this.setState({
-      queryString
-    })
+    // console.log('query string', queryString);
+    // this.setState({
+    //   queryString
+    // })
     requestGetRecordByQueryString(queryString, this.state.selectedDB);
   }
 
